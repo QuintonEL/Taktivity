@@ -1,7 +1,63 @@
 -- Drop and recreate Users table (Example)
 
 DROP TABLE IF EXISTS users CASCADE;
-CREATE TABLE users (
+DROP TABLE IF EXISTS resources CASCADE;
+DROP TABLE IF EXISTS categories CASCADE;
+DROP TABLE IF EXISTS resource_categories CASCADE;
+DROP TABLE IF EXISTS favourites CASCADE;
+DROP TABLE IF EXISTS comments CASCADE;
+DROP TABLE IF EXISTS rating CASCADE;
+
+
+
+CREATE TABLE users(
   id SERIAL PRIMARY KEY NOT NULL,
-  name VARCHAR(255) NOT NULL
+  name VARCHAR(255) NOT NULL,
+  email VARCHAR(255) NOT NULL,
+  password VARCHAR(255) NOT NULL
 );
+
+
+
+CREATE TABLE resources(
+  id SERIAL PRIMARY KEY NOT NULL,
+  creator_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  title VARCHAR(255) NOT NULL,
+  url VARCHAR(255) NOT NULL,
+  description VARCHAR(255),
+  image_url VARCHAR(255)
+);
+
+CREATE TABLE categories(
+  id SERIAL PRIMARY KEY NOT NULL,
+  title VARCHAR(255) NOT NULL
+);
+
+CREATE TABLE resource_categories(
+  id SERIAL PRIMARY KEY NOT NULL,
+  resource_id INTEGER REFERENCES resources(id) ON DELETE CASCADE,
+  category_id INTEGER REFERENCES categories(id) ON DELETE CASCADE
+);
+
+
+CREATE TABLE favourites(
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  resource_id INTEGER REFERENCES resources(id) ON DELETE CASCADE
+);
+
+CREATE TABLE comments(
+  id SERIAL PRIMARY KEY NOT NULL,
+  resource_id INTEGER REFERENCES resources(id) ON DELETE CASCADE,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  text TEXT,
+  created_at TIMESTAMP
+);
+
+CREATE TABLE ratings(
+  id SERIAL PRIMARY KEY NOT NULL,
+  user_id INTEGER REFERENCES users(id) ON DELETE CASCADE,
+  resource_id INTEGER REFERENCES resources(id) ON DELETE CASCADE,
+  rating SMALLINT
+);
+
