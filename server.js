@@ -7,8 +7,16 @@ const ENV        = process.env.ENV || "development";
 const express    = require("express");
 const bodyParser = require("body-parser");
 const sass       = require("node-sass-middleware");
+const cookieSession = require("cookie-session")
 const app        = express();
 const morgan     = require('morgan');
+const bcrypt     = require('bcrypt');
+
+//A user session can be stored in two main ways with cookies: on the server or on the client
+app.use(cookieSession({
+  name: 'session',
+  keys: ['key1']
+}));
 
 // PG database client/connection setup
 const { Pool } = require('pg');
@@ -50,6 +58,8 @@ app.get("/", (req, res) => {
   res.render("index");
 });
 
+
+
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}`);
+  console.log(`Example app listening on port ${PORT}🇨🇦`);
 });
