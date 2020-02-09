@@ -3,8 +3,6 @@
   <head>
     <title>Home Page</title>
 
-    <!-- Bootstrap -->
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
 
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
@@ -13,13 +11,73 @@
     <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
     <link rel="stylesheet" href="/styles/layout.scss" type="text/css" />
 
-
-
     <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
     <script type="text/javascript" src="/scripts/app.js"></script>
+
+    <!-- Bootstrap -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
   </head>
 
   <body>
+    <!-- Modal -->
+    <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog form-dark" role="document">
+      <!--Content-->
+      <div class="modal-content card card-image" style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
+        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+          <!--Header-->
+          <div class="modal-header text-center pb-4">
+            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>SIGN</strong> <a
+                class="green-text font-weight-bold"><strong> UP</strong></a></h3>
+            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!--Body-->
+          <div class="modal-body">
+            <!--Body-->
+            <div class="md-form mb-5">
+              <input type="email" id="Form-email5" class="form-control validate white-text">
+              <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
+            </div>
+            <div class="md-form pb-3">
+              <input type="password" id="Form-pass5" class="form-control validate white-text">
+              <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
+              <div class="form-group mt-4">
+                <input class="form-check-input" type="checkbox" id="checkbox624">
+                <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#" class="green-text font-weight-bold">
+                    Terms and Conditions</a></label>
+              </div>
+            </div>
+            <!--Grid row-->
+            <div class="row d-flex align-items-center mb-4">
+              <!--Grid column-->
+              <div class="text-center mb-3 col-md-12">
+                <button type="button" class="btn btn-success btn-block btn-rounded z-depth-1">Sign up</button>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-12">
+                <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#" class="green-text ml-1 font-weight-bold">
+                Log in</a></p>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </div>
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+    </div>
+    <!-- Modal -->
     <!-- Header -->
     <div class="topnav">
       <a class="home" href="/">
@@ -27,6 +85,7 @@
       </a>
       <!-- Search form -->
       <input class="search" type="text" placeholder="Search">
+        <a id="modalBtn" href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#darkModalForm">Login/Register</a>
       <a class="user" href="/user">
         <img class="user"src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"alt="user">
       </a>
