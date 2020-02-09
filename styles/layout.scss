@@ -1,3 +1,25 @@
+.user, .logo {
+  height: auto;
+  width: auto;
+  max-height: 50px;
+  max-width: 200px;
+  float: right;
+  vertical-align: middle;
+  box-sizing: content-box;
+  margin-top: 0.8%;
+  margin-right: 3%;
+}
+
+.search {
+  margin: auto;
+  width: 50%;
+  border: 1px solid red;
+  padding: 10px;
+  border-radius: 20px;
+  margin-top: 0.8%;
+  margin-left: 2%;
+}
+
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: #333;
@@ -9,7 +31,7 @@
 }
 
 /* Style the links inside the navigation barrrr */
-.topnav a {
+.topnav .home {
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -20,7 +42,7 @@
 
 /* Change the color of links on hover */
 .topnav a:hover {
-  background-color: #ddd;
+  background-color: red;
   color: black;
 }
 
@@ -109,16 +131,6 @@ body {
 }
 .masonry-footer:hover, .masonry-footer:active, .masonry-footer:focus {
   opacity: .75;
-}
-
-.user, .logo {
-  height: auto;
-  width: auto;
-  max-height: 50px;
-  max-width: 200px;
-  float: right;
-  vertical-align: middle;
-  margin-top: 0.5%;
 }
 
 .mr-auto {
