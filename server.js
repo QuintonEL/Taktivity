@@ -10,7 +10,6 @@ const sass       = require("node-sass-middleware");
 const cookieSession = require("cookie-session")
 const app        = express();
 const morgan     = require('morgan');
-const bcrypt     = require('bcrypt');
 
 //A user session can be stored in two main ways with cookies: on the server or on the client
 app.use(cookieSession({
@@ -32,8 +31,8 @@ app.use(morgan('dev'));
 app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use("/styles", sass({
-  src: __dirname + "/styles",
-  dest: __dirname + "/public/styles",
+  src: __dirname, "/styles",
+  dest: __dirname, "/public/styles",
   debug: true,
   outputStyle: 'expanded'
 }));
@@ -48,7 +47,7 @@ const widgetsRoutes = require("./routes/widgets");
 // Note: Feel free to replace the example routes below with your own
 app.use("/api/users", usersRoutes(db));
 app.use("/api/widgets", widgetsRoutes(db));
-// Note: mount other resources here, using the same pattern above
+Note: mount other resources here, using the same pattern above
 
 
 // Home page
@@ -61,5 +60,5 @@ app.get("/", (req, res) => {
 
 
 app.listen(PORT, () => {
-  console.log(`Example app listening on port ${PORT}🇨🇦`);
+  console.log(`Taktivity app listening on port ${PORT}🇨🇦`);
 });
