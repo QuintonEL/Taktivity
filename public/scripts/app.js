@@ -16,13 +16,23 @@ jQuery(function($){
 
     $("#SignUp").submit(function (event) {
       event.preventDefault()
-      $.post('/api/users/', $(this).serialize(), function (html) {
-        console.log('all good', html)
+      $.post('/api/users/', $(this).serialize(), function (respond) {
+        console.log('all good', respond)
 
        window.location.href = '/'
 
-      }, 'html')
+      }, 'respond')
     });
+
+  $("#logIn").submit(function (event) {
+    event.preventDefault()
+    $.post('/api/users/', $(this).serialize(), function (respond) {
+      console.log('all good', respond)
+
+      window.location.href = '/'
+
+    }, 'respond')
+  });
 
 
 
