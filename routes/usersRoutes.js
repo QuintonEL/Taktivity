@@ -14,7 +14,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;
-        res.json({ users });
+        res.render({ users });
       })
       .catch(err => {
         res
@@ -22,12 +22,6 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
-  return router;
-};
-
-
-module.exports = function (router, database) {
-
   // Create a new user
   router.post('/', (req, res) => {
     const user = req.body;
@@ -44,11 +38,7 @@ module.exports = function (router, database) {
       .catch(e => res.send(e));
   });
 
-  /**
-   * Check if a user exists with a given username and password
-   * @param {String} email
-   * @param {String} password encrypted
-   */
+
   const login = function (email, password) {
     return database.getUserByEmail(email)
       .then(user => {
@@ -74,11 +64,6 @@ module.exports = function (router, database) {
       .catch(e => res.send(e));
   });
 
-  router.post("/logout", (req, res) => {
-    req.session.userId = null;
-    res.send({});
-  });
-
   router.get("/myAccount", (req, res) => {
     const userId = req.session.userId;
     if (!userId) {
@@ -97,10 +82,8 @@ module.exports = function (router, database) {
       })
       .catch(e => res.send(e));
   });
-
   return router;
-}
-
+};
 
 
 
