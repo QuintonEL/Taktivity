@@ -38,7 +38,6 @@ module.exports = (db) => {
       .catch(e => res.send(e));
   });
 
-
   const login = function (email, password) {
     return database.getUserByEmail(email)
       .then(user => {
