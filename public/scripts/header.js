@@ -1,7 +1,7 @@
 $(() => {
   window.header = {};
 
-  const $pageHeader = $('#page-header');
+  const $pageHeader = $('.topnav');
   let currentUser = null;
   function updateHeader(user) {
     currentUser = user;
@@ -10,28 +10,31 @@ $(() => {
 
     if (!user) {
       userLinks = `
-      <nav id="page-header__user-links" class="page-header__user-links">
-        <ul>
-          <li class="home">🏠</li>
-          <li class="search_button">Search</li>
-          <li class="login_button">Log In</li>
-          <li class="sign-up_button">Sign Up</li>
-        </ul>
-      </nav>
+      <div class="topnav">
+      <a class="home" href="/">
+        <img class="logo" src="https://files.slack.com/files-pri/T2G8TE2E5-FTE1BNS91/output-onlinepngtools__3_.png" alt="logo">
+      </a>
+      <!-- Search form -->
+      <input class="search" type="text" placeholder="Search">
+        <a id="modalBtn" href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#darkModalForm">Login/Register</a>
+      <a class="user" href="/user">
+        <img class="user"src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"alt="user">
+      </a>
+    </div>
       `
     } else {
       userLinks = `
-      <nav id="page-header__user-links" class="page-header__user-links">
-        <ul>
-          <li class="home">🏠</li>
-          <li class="search_button">Search</li>
-          <li>${user.name}</li>
-          <li class="create_listing_button">Create Listing</li>
-          <li class="my_listing_button">My Listings</li>
-          <li class="my_reservations_button">My Reservations</li>
-          <li class="logout_button">Log Out</li>
-        </ul>
-      </nav>
+      <div class="topnav">
+      <a class="home" href="/">
+        <img class="logo" src="https://files.slack.com/files-pri/T2G8TE2E5-FTE1BNS91/output-onlinepngtools__3_.png" alt="logo">
+      </a>
+      <!-- Search form -->
+      <input class="search" type="text" placeholder="Search">
+      ${user.name}
+      <a class="user" href="/user">
+        <img class="user"src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"alt="user">
+      </a>
+    </div>
       `
     }
 
