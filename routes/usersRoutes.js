@@ -8,26 +8,29 @@
 const express = require('express');
 const router  = express.Router();
 const bcrypt = require('bcrypt');
+// const database = require('./database')
 
-module.exports = (db) => {
-  router.get("/", (req, res) => {
-    db.query(`SELECT * FROM users;`)
-      .then(data => {
-        const users = data.rows;
-        res.render({ users });
-      })
-      .catch(err => {
-        res
-          .status(500)
-          .json({ error: err.message });
-      });
-  });
+module.exports = (database) => {
+  // router.get("/", (req, res) => {
+  //   db.query(`SELECT * FROM users;`)
+  //     .then(data => {
+  //       const users = data.rows;
+  //       res.render({ users });
+  //     })
+  //     .catch(err => {
+  //       res
+  //         .status(500)
+  //         .json({ error: err.message });
+  //     });
+  // });
   // Create a new user
   router.post('/', (req, res) => {
     const user = req.body;
+    console.log("dhdssdgsdgdsgsgysdygsegy", user)
     user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
       .then(user => {
+        console.log('WSEDRFTGYHJ', user)
         if (!user) {
           res.send({ error: "error" });
           return;
@@ -36,6 +39,11 @@ module.exports = (db) => {
         res.send("🤗");
       })
       .catch(e => res.send(e));
+  });
+  // Logout
+  router.get('/logout', (req, res) => {
+    req.session.userId = null;
+    res.redirect("/")
   });
 
 
@@ -48,9 +56,9 @@ module.exports = (db) => {
         return null;
       });
   }
-  exports.login = login;
+  // exports.login = login;
 
-  router.post('/', (req, res) => {
+  router.post('/login', (req, res) => {
     const { email, password } = req.body;
     login(email, password)
       .then(user => {
@@ -82,6 +90,8 @@ module.exports = (db) => {
       })
       .catch(e => res.send(e));
   });
+
+
   return router;
 };
 
