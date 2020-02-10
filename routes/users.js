@@ -14,7 +14,7 @@ module.exports = (db) => {
     db.query(`SELECT * FROM users;`)
       .then(data => {
         const users = data.rows;
-        res.json({ users });
+        res.render({ users });
       })
       .catch(err => {
         res
