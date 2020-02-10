@@ -1,4 +1,8 @@
-const pool = require('../db');
+//PG database client/connection setup
+const { Pool } = require('pg');
+const dbParams = require('../lib/db');
+const pool = new Pool(dbParams);
+pool.connect();
 
 //get a single user from the data base given their email
 const getUserByEmail = function(email){
@@ -7,7 +11,7 @@ const getUserByEmail = function(email){
     FROM users
     WHERE email = $1
   `, [email])
-  .then(res => res.row[0]);
+  .then(res => res.rows[0]);
 }
 exports.getUserByEmail = getUserByEmail;
 
@@ -18,19 +22,29 @@ const getUserById = function(id){
     FROM users
     WHERE id = $1
     `, [id])
-    .then(res => res.row[0]);
+    .then(res => res.rows[0]);
 }
 exports.getUserById = getUserById;
 
 //add a new user to the database
 const addUser = function(user){
   return pool.query(`
-  INSERT INTO users (name, email, password)
-  VALUES($1, $2, $3)
+  INSERT INTO users (email, password)
+  VALUES($1, $2)
   RETURNING *
-  `, [user.name, user.email, user.password])
-  .then(res => res.row[0]);
+  `, [user.email, user.password])
+  .then(res => res.rows[0])
+  .catch(errrrr => console.log('errrrr', errrrr))
 }
 exports.addUser = addUser;
 
+
+const getAllResources = function(){
+  return pool.query(`
+    SELECT *
+    FROM resources
+    LIMIT 15
+  `, [])
+  .then( res => res.rows[0]);
+}
 

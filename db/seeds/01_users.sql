@@ -1,8 +1,8 @@
 -- Users table seeds here (Example)
-INSERT INTO users (name, email, password)
-VALUES ('Alice', 'alicehope@gmail.com', 'password'),
-('Kira', 'kiraanderson@gmail.com', 'password'),
-('John', 'johnlong@gmail.com', 'password');
+INSERT INTO users (email, password)
+VALUES ('alicehope@gmail.com', 'password'),
+('kiraanderson@gmail.com', 'password'),
+('johnlong@gmail.com', 'password');
 
 
 INSERT INTO resources (creator_id, title, url, description, image_url)
