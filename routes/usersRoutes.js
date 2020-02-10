@@ -46,7 +46,6 @@ module.exports = (database) => {
     res.redirect("/")
   });
 
-
   const login = function (email, password) {
     return database.getUserByEmail(email)
       .then(user => {
