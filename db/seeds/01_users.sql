@@ -20,9 +20,9 @@ INSERT INTO favourites (user_id, resource_id)
 VALUES (1, 1), (2, 2), (3, 3);
 
 INSERT INTO comments (resource_id, user_id, text, created_at)
-VALUES (1, 1, 1, 'Wow that is so cool', '2020-01-01 00:00:01'),
-(2, 2, 2, 'That is very good to know', '2020-01-02 00:00:01'),
-(3, 3, 3, 'Nice post, I am going to give this a try', '2020-01-03 00:00:01');
+VALUES (1, 1, 'Wow that is so cool', '2020-01-01 00:00:01'),
+(2, 2, 'That is very good to know', '2020-01-02 00:00:01'),
+(3, 3, 'Nice post, I am going to give this a try', '2020-01-03 00:00:01');
 
 INSERT INTO ratings (user_id, resource_id, rating)
 VALUES (1, 1, 3), (2, 2, 4), (3, 3, 5);
