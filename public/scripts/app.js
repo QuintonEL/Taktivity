@@ -12,7 +12,7 @@
 jQuery(function($){
   const loggedInUserId = $('#modalBtn').data("userid");
 
-  if (!loggedInUserId) { $('#modalBtn').trigger('click') }
+  // if (!loggedInUserId) { $('#modalBtn').trigger('click') }
 
     $("#SignUp").submit(function (event) {
       event.preventDefault()

@@ -66,7 +66,7 @@ module.exports = (database) => {
           return;
         }
         req.session.userId = user.id;
-        res.send({ user: { name: user.name, email: user.email, id: user.id } });
+        res.send({ user: { email: user.email, id: user.id } });
       })
       .catch(e => res.send(e));
   });
@@ -85,7 +85,7 @@ module.exports = (database) => {
           return;
         }
 
-        res.send({ user: { name: user.name, email: user.email, id: userId } });
+        res.send({ user: { email: user.email, id: userId } });
       })
       .catch(e => res.send(e));
   });
