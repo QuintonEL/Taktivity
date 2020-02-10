@@ -15,7 +15,7 @@ module.exports = (db) => {
     db.query(query)
       .then(data => {
         const widgets = data.rows;
-        res.json({ widgets });
+        res.render('index', { widgets });
       })
       .catch(err => {
         res
@@ -23,5 +23,8 @@ module.exports = (db) => {
           .json({ error: err.message });
       });
   });
+
+
+  ///
   return router;
 };
