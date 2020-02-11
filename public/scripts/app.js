@@ -24,16 +24,6 @@ jQuery(function($){
       }, 'respond')
     });
 
-  $("#logIn").submit(function (event) {
-    event.preventDefault()
-    $.post('/api/users/', $(this).serialize(), function (respond) {
-      console.log('all good', respond)
-
-      window.location.href = '/'
-
-    }, 'respond')
-  });
-
 
 
 });
