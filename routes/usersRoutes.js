@@ -10,28 +10,35 @@ const router  = express.Router();
 const bcrypt = require('bcrypt');
 // const database = require('./database')
 
+
 module.exports = (database) => {
-  // router.get("/", (req, res) => {
-  //   db.query(`SELECT * FROM users;`)
-  //     .then(data => {
-  //       const users = data.rows;
-  //       res.render({ users });
-  //     })
-  //     .catch(err => {
-  //       res
-  //         .status(500)
-  //         .json({ error: err.message });
-  //     });
-  // });
+  //display all resources
+  //get data from the database
+  //pass data to renderResources
+  //limit function calls
+  router.get('/', (req, res) => {
+    res.send('homepage')
+    console.log(req, res)
+    database.getAllResources()
+      .then(data => {
+        console.log('dataaaaaaa',data)
+        const resources = data.rows;
+        renderResources(resources)
+        res.render({ resources });
+      })
+      .catch(err => {
+        res
+          .status(500)
+          .json({ error: err.message });
+      });
+  });
 
   // Create a new user
   router.post('/', (req, res) => {
-    console.log('Registerrrrrrrrr')
     const user = req.body;
     user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
       .then(user => {
-        console.log('user info', user)
         if (!user) {
           res.send({ error: "error" });
           return;
@@ -53,7 +60,6 @@ module.exports = (database) => {
         try{
 
           if (user && bcrypt.compareSync(password, user.password)) {
-            console.log('password', password, user.password)
             return user;
           }
         }catch(e){
@@ -65,7 +71,6 @@ module.exports = (database) => {
 
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
-    console.log('loginnnnnnnnn')
     login(email, password)
       .then(user => {
         console.log('hellooo', user)
@@ -104,7 +109,3 @@ module.exports = (database) => {
 
   return router;
 };
-
-
-
-

@@ -40,13 +40,24 @@ const addUser = function(user){
 }
 exports.addUser = addUser;
 
-
+//get all resources
 const getAllResources = function(){
   return pool.query(`
     SELECT *
     FROM resources
     LIMIT 15
   `, [])
-  .then( res => res.rows[0]);
+  .then(res => res.rows[0]);
 }
+exports.getAllResources = getAllResources;
 
+//add a resource
+const addResource = function(resource){
+  return pool.query(`
+    INSERT INTO resources (creator_id, title, url, description, image_url)
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING *;
+  `, [resource.creator_id, resource.title, resource.url, resource.description, resource.image_url])
+  .then(res => res.rows[0]);
+}
+exports.addResource = addResource;

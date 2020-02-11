@@ -55,8 +55,23 @@ app.use("/api/widgets", widgetsRoutes(database));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
+  console.log('here')
   const userId = req.session.userId;
-  res.render("index", { userId });
+  database.getAllResources()
+  .then(data => {
+    console.log('dataaaaaaa',data)
+    // const resources = data.rows[0];
+    // console.log('resources',resources)
+    // renderResources(data)
+    res.render("index", { userId, data });
+    // res.render({ resources });
+  })
+  .catch(err => {
+    res
+    .status(500)
+    .json({ error: err.message });
+  });
+
 });
 
 
