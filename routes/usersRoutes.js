@@ -26,11 +26,9 @@ module.exports = (database) => {
   // Create a new user
   router.post('/', (req, res) => {
     const user = req.body;
-    console.log("dhdssdgsdgdsgsgysdygsegy", user)
     user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
       .then(user => {
-        console.log('WSEDRFTGYHJ', user)
         if (!user) {
           res.send({ error: "error" });
           return;
