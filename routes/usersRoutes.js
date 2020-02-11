@@ -23,20 +23,21 @@ module.exports = (database) => {
   //         .json({ error: err.message });
   //     });
   // });
+
   // Create a new user
   router.post('/', (req, res) => {
+    console.log('Registerrrrrrrrr')
     const user = req.body;
-    console.log("dhdssdgsdgdsgsgysdygsegy", user)
     user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
       .then(user => {
-        console.log('WSEDRFTGYHJ', user)
+        console.log('user info', user)
         if (!user) {
           res.send({ error: "error" });
           return;
         }
         req.session.userId = user.id;
-        res.send("🤗");
+        res.send(":hugging_face:");
       })
       .catch(e => res.send(e));
   });
@@ -49,18 +50,25 @@ module.exports = (database) => {
   const login = function (email, password) {
     return database.getUserByEmail(email)
       .then(user => {
-        if (bcrypt.compareSync(password, user.password)) {
-          return user;
+        try{
+
+          if (user && bcrypt.compareSync(password, user.password)) {
+            console.log('password', password, user.password)
+            return user;
+          }
+        }catch(e){
+          console.log('helpme', e)
         }
-        return null;
-      });
+        throw new Error('Invalid User');
+      })
   }
-  // exports.login = login;
 
   router.post('/login', (req, res) => {
     const { email, password } = req.body;
+    console.log('loginnnnnnnnn')
     login(email, password)
       .then(user => {
+        console.log('hellooo', user)
         if (!user) {
           res.send({ error: "error" });
           return;
@@ -68,7 +76,10 @@ module.exports = (database) => {
         req.session.userId = user.id;
         res.send({ user: { email: user.email, id: user.id } });
       })
-      .catch(e => res.send(e));
+      .catch(e => {
+        res.status(404).send({ error: e.message })
+        console.log('thisisamess', e)
+      });
   });
 
   router.get("/myAccount", (req, res) => {

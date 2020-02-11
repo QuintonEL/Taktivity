@@ -11,7 +11,8 @@ const getUserByEmail = function(email){
     FROM users
     WHERE email = $1
   `, [email])
-  .then(res => res.rows[0]);
+  .then(res => res.rows[0])
+  .catch(errrrr => console.log('errrrr', errrrr))
 }
 exports.getUserByEmail = getUserByEmail;
 
@@ -22,7 +23,8 @@ const getUserById = function(id){
     FROM users
     WHERE id = $1
     `, [id])
-    .then(res => res.rows[0]);
+    .then(res => res.rows[0])
+    .catch(errrrr => console.log('errrrr', errrrr))
 }
 exports.getUserById = getUserById;
 
