@@ -27,8 +27,13 @@ jQuery(function($){
 
     $("#login").submit(function (event) {
       event.preventDefault()
+<<<<<<< HEAD
       $.post('/api/users/', $(this).serialize(), function (respond) {
         console.log('all good', respond)
+=======
+      $.post('/api/users/login', $(this).serialize(), function (html) {
+        console.log('all good', html)
+>>>>>>> 44790796d99a83941c23adc52f518ae31892b9f1
 
        window.location.href = '/'
 
