@@ -82,10 +82,11 @@ module.exports = (database) => {
       });
   });
 
-  router.get("/myAccount", (req, res) => {
+  router.get("/myResources", (req, res) => {
     const userId = req.session.userId;
     if (!userId) {
-      res.send({ message: "not logged in" });
+      res.redirect("/")
+      // res.send({ message: "not logged in" });
       return;
     }
 
