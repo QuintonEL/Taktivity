@@ -61,3 +61,37 @@ const addResource = function(resource){
   .then(res => res.rows[0]);
 }
 exports.addResource = addResource;
+
+//add a comment
+const addComment = function(comment){
+return pool.query(`
+  INSERT INTO comments (resource_id, user_id, text, created_at)
+  VALUES ($1, $2, $3, $4)
+  RETURNING *;
+`, [comment.resource_id, comment.user_id, comment.text, comment.created_at])
+.then(res => res.rows[0]);
+}
+exports.addComment = addComment;
+
+//add a rating
+const addRating = function(rating){
+  return pool.query(`
+    INSERT INTO ratings (user_id, resource_id, rating)
+    VALUES ($1, $2, $3)
+    RETURNING *;
+  `, [rating.user_id, rating.resource_id, rating.rating])
+  .then(res => res.rows[0]);
+  }
+  exports.addRating = addRating;
+
+  //add a favourite
+const addFavourite = function(){
+  return pool.query(`
+    INSERT INTO favourites (resource_id, user_id,)
+    VALUES ($1, $2)
+    RETURNING *;
+  `, [favourites.resource_id, favourites.user_id])
+  .then(res => res.rows[0]);
+  }
+  exports.addFavourite = addFavourite;
+
