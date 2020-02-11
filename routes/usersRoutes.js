@@ -31,10 +31,7 @@ module.exports = (database) => {
     user.password = bcrypt.hashSync(user.password, 12);
     database.addUser(user)
       .then(user => {
-<<<<<<< HEAD
-=======
         console.log('user info', user)
->>>>>>> 44790796d99a83941c23adc52f518ae31892b9f1
         if (!user) {
           res.send({ error: "error" });
           return;
