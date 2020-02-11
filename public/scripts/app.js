@@ -10,11 +10,22 @@
 // });
 
 jQuery(function($){
-  const loggedInUserId = $('#modalBtn').data("userid");
+  // const loggedInUserId = $('#modalBtn').data("userid");
 
   // if (!loggedInUserId) { $('#modalBtn').trigger('click') }
 
-    $("#SignUp").submit(function (event) {
+    $("#signUp").submit(function (event) {
+      event.preventDefault()
+      $.post('/api/users/', $(this).serialize(), function (html) {
+        console.log('all good', html)
+
+       window.location.href = '/'
+
+      }, 'html')
+    });
+
+
+    $("#login").submit(function (event) {
       event.preventDefault()
       $.post('/api/users/', $(this).serialize(), function (respond) {
         console.log('all good', respond)
