@@ -214,3 +214,21 @@ body {
 .mr-auto {
   margin-left: auto;
  }
+
+ .container {
+  position: relative;
+  width: 50%;
+}
+
+/* Make the image responsive */
+
+#image-buttons input{
+  width: 50%;
+}
+
+#image-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-left: 10%;
+}
+
