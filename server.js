@@ -59,7 +59,10 @@ app.get("/", (req, res) => {
   res.render("index", { userId });
 });
 
-
+app.get("/myResources", (req, res) => {
+  const userId = req.session.userId;
+  res.render("myResources", { userId });
+})
 
 app.listen(PORT, () => {
   console.log(`Taktivity app listening on port ${PORT}🇨🇦`);
