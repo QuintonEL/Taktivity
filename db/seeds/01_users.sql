@@ -6,9 +6,10 @@ VALUES ('alicehope@gmail.com', 'password'),
 
 
 INSERT INTO resources (creator_id, title, url, description, image_url)
-VALUES (1, 'Partial Fractions', 'http://tutorial.math.lamar.edu/Classes/CalcII/PartialFractions.aspx', 'Partial fraction decomposition tutorial', 'https://cdn2.iconfinder.com/data/icons/picons-basic-3/57/basic3-105_calculator-512.png'),
+VALUES (1, 'Partial Fractions', 'http://tutorial.math.lamar.edu/Classes/CalcII/PartialFractions.aspx', 'Partial fraction decomposition tutorial', 'https://www.itweb.co.za/static/pictures/2018/05/resized/-fs-Math-2018.xl.jpg'),
 (2, 'Quantum Mechanics', 'https://en.wikipedia.org/wiki/Quantum_mechanics', 'Everything about quantum mechanics', 'https://cdn3.iconfinder.com/data/icons/science-42/200/799_science-512.png'),
 (3, 'Software Development', 'https://www.ibm.com/topics/software-development', 'IBM Introduction to software development', 'https://cdn1.iconfinder.com/data/icons/seo-and-web-development-color/64/seo-and-web-development-01-512.png');
+(3, 'Intro to Chemestry', 'https://www.khanacademy.org/science/chemistry', 'Intro to Atoms, Compounds, Icons', 'https://www.pinclipart.com/picdir/middle/31-314343_chemistry-clipart-icon-png-transparent-png.png')
 
 INSERT INTO categories (title)
 VALUES ('Math'), ('Physics'), ('Software');
