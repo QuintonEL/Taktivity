@@ -44,6 +44,7 @@ module.exports = (database) => {
   // Logout
   router.get('/logout', (req, res) => {
     req.session.userId = null;
+
     res.redirect("/")
   });
 
@@ -84,10 +85,12 @@ module.exports = (database) => {
 
   router.get("/myResources", (req, res) => {
     const userId = req.session.userId;
+    console.log('userId', userId)
     if (!userId) {
+      console.log(userId)
       res.redirect("/")
       // res.send({ message: "not logged in" });
-      return;
+      // return;
     }
 
     database.getUserById(userId)
@@ -101,6 +104,7 @@ module.exports = (database) => {
       })
       .catch(e => res.send(e));
   });
+
 
 
   return router;
