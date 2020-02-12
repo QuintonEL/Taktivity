@@ -160,13 +160,25 @@
       <div class="masonry">
         <%for (let i = 0; i < data.length; i++) {%>
         <div class="masonry-item">
-          <div class="masonry-content">
+          <div class="masonry-content" data-toggle="modal"
+          data-target="#resourcemodal">
             <img src="<%=data[i].image_url%>" alt="Resource Topic">
             <h3 class="masonry-title"><%=data[i].title%></h3>
             <p class="masonry-description"><%=data[i].description%></p>
           </div>
         </div>
         <%}%>
+<!-- 
+        <div class="masonry-wrapper">
+          <div class="masonry">
+            <div class="masonry-item" >
+              <div class="masonry-content" >
+                <img src="<%=data.image_url%>" alt="Resource Topic">
+                <h3 class="masonry-title"><%=data.title%></h3>
+                <p class="masonry-description"><%=data.description%></p>
+              </div>
+            </div> -->
+
       <!-- <div class="masonry-item">
         <div class="masonry-content">
           <img src="https://picsum.photos/450/325?image=100" alt="Dummy Image">
