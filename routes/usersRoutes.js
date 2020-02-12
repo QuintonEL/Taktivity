@@ -18,11 +18,9 @@ module.exports = (database) => {
   //limit function calls
   router.get('/', (req, res) => {
     res.send('homepage')
-    console.log(req, res)
     database.getAllResources()
       .then(data => {
         res.send('etsttttt')
-        console.log('dataaaaaaa',data)
         const resources = data.rows;
         renderResources(resources)
         res.render({ resources });
