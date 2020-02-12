@@ -6,18 +6,17 @@ module.exports = (database) => {
 router.post('/new', (req, res) => {
   let newResourceData = req.body;
   newResourceData.creator_id = req.session.userId;
-  console.log(newResourceData)
+  console.log('REQ.SESSSSIIIIIIOOOOONN', req.session.userId)
+  console.log('NEWRESOURCEDATAAAAAA', newResourceData)
   database.createResources(newResourceData)
     .then(data => {
-
+      res.redirect('/')
     })
     .catch(err => {
       res.status(500)
       res.json({ error: err.message });
     })
 })
-
-
 
 return router;
 }
