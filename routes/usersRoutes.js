@@ -21,6 +21,7 @@ module.exports = (database) => {
     console.log(req, res)
     database.getAllResources()
       .then(data => {
+        res.send('etsttttt')
         console.log('dataaaaaaa',data)
         const resources = data.rows;
         renderResources(resources)
