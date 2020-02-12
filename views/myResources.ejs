@@ -168,12 +168,16 @@
   </div>
 
   <section id="create-post">
-    <form action="/" method="POST">
+    <form action="/api/resources/new" method="POST">
       <input type="file" class="choose-file" name="fileupload" value="fileupload">
       <label for="fileupload"> Select a file to upload</label>
       <div>
         <h4>Title</h4>
       <input type="text" name="title" maxlength="20" class="title" placeholder="Enter a title..">
+      </div>
+      <div>
+        <h4>Enter Url</h4>
+        <input type="url" name="url" class="url" placeholder="Enter a URL..">
       </div>
       <div>
         <textarea name="description" class="description" placeholder="  Write a description.." maxlength="140"></textarea>
