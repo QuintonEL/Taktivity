@@ -81,10 +81,10 @@ const addRating = function(rating){
     RETURNING *;
   `, [rating.user_id, rating.resource_id, rating.rating])
   .then(res => res.rows[0]);
-  }
-  exports.addRating = addRating;
+}
+exports.addRating = addRating;
 
-  //add a favourite
+//add a favourite
 const addFavourite = function(){
   return pool.query(`
     INSERT INTO favourites (resource_id, user_id,)
@@ -92,6 +92,17 @@ const addFavourite = function(){
     RETURNING *;
   `, [favourites.resource_id, favourites.user_id])
   .then(res => res.rows[0]);
-  }
-  exports.addFavourite = addFavourite;
+}
+exports.addFavourite = addFavourite;
 
+//search by keyword
+const searchResource = function(searchKey){
+  return pool.query(`
+    SELECT title
+    FROM resources
+    WHERE title
+    LIKE '%$1%';
+  `, [searchKey])
+  .then(res => res.rows[0]);
+}
+exports.addFavourite = searchResource;
