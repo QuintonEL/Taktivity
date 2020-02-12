@@ -150,7 +150,7 @@
   </div>
   <div class="topnav">
     <a class="home" href="/">
-      <img class="logo" src="./img/logo.png" alt="logo">
+      <img class="logo" src="../img/logo.png" alt="logo">
     </a>
     <!-- Search form -->
     <input class="search" type="text" placeholder="Search">
@@ -169,21 +169,20 @@
 
   <section id="create-post">
     <form action="/api/resources/new" method="POST">
-      <input type="file" class="choose-file" name="fileupload" value="fileupload">
-      <label for="fileupload"> Select a file to upload</label>
+      <h1>Create a Resource</h1>
       <div>
-      <input type="text" name="title" maxlength="20" class="title" placeholder="Enter a title..">
-      </div>
-      <div>
-        <h4>Enter Url</h4>
-        <input type="url" name="url" class="url" placeholder="Enter a URL..">
+        <input type="text" name="title" maxlength="20" class="title" placeholder="Enter a title..">
       </div>
       <div>
         <textarea name="description" class="description" placeholder="  Write a description.." maxlength="140"></textarea>
       </div>
-      <input type="file" class="choose-file" name="fileupload" value="fileupload">
-      <label for="fileupload"> </label>
-      <br><input type="submit" class="button-create" alt="Submit" width="100">
+      <div>
+        <input type="url" name="url" class="url" placeholder="Enter a Resource URL..">
+      </div>
+      <div>
+        <input type="url" name="image_url" class="image_url" placeholder="Enter Cover Photo URL..">
+      </div>
+      <input type="submit" class="button-create" alt="Submit" width="100">
     </form>
   </section>
 
@@ -205,6 +204,25 @@
 
   </div>
 
+  <div class="masonry-wrapper">
+    <div class="masonry">
+      <%for (let i = 0; i < data.length; i++) {%>
+      <div class="masonry-item">
+        <div class="masonry-content" data-toggle="modal"
+        data-target="#resourcemodal">
+          <img src="<%=data[i].image_url%>" alt="Resource Topic">
+          <a href="<%=data[i].url%>" target="_blank">
+          <h3 class="masonry-title"><%=data[i].title%></h3>
+          </a>
+          <p class="masonry-description"><%=data[i].description%></p>
+        </div>
+      </div>
+      <%}%>
+  </div>
+  <div class="masonry-footer">
+    <p>Created with &#10084; with <a href="//w3bits.com/tools/masonry-generator/" target="_blank" rel="external noopener nofollow">CSS Masonry Generator</a></p>
+  </div>
+  </div>
 
 </body>
 

@@ -21,7 +21,7 @@ const getUserById = function(id){
   return pool.query(`
     SELECT *
     FROM users
-    WHERE id = $1
+    WHERE id = $1;
     `, [id])
     .then(res => res.rows[0])
     .catch(errrrr => console.log('errrrr', errrrr))
@@ -33,7 +33,7 @@ const addUser = function(user){
   return pool.query(`
   INSERT INTO users (email, password)
   VALUES($1, $2)
-  RETURNING *
+  RETURNING *;
   `, [user.email, user.password])
   .then(res => res.rows[0])
   .catch(errrrr => console.log('errrrr', errrrr))
@@ -45,11 +45,24 @@ const getAllResources = function(){
   return pool.query(`
     SELECT *
     FROM resources
-    LIMIT 15
+    LIMIT 15;
   `, [])
   .then(res => res.rows);
 }
 exports.getAllResources = getAllResources;
+
+//get all resources for user
+const getAllResourcesById = function(creatorId){
+  console.log(creatorId)
+  return pool.query(`
+    SELECT *
+    FROM resources
+    WHERE creator_id = $1
+    LIMIT 100;
+  `, [creatorId])
+  .then(res => res.rows);
+}
+exports.getAllResourcesById = getAllResourcesById;
 
 //add a comment
 const addComment = function(comment){
@@ -85,17 +98,16 @@ const addFavourite = function(){
 exports.addFavourite = addFavourite;
 
 //create resource
-  const createResources = function(resources){
-    return pool.query(`
-    INSERT INTO resources (creator_id, title, url, description, image_url)
-    VALUES ($1, $2, $3, $4, $5)
-    RETURNING *;
-    `, [resources.creator_id, resources.title, resources.url, resources.description, resources.fileupload])
-    .then((res) => {
+const createResources = function(resources){
+  return pool.query(`
+  INSERT INTO resources (creator_id, title, url, description, image_url)
+  VALUES ($1, $2, $3, $4, $5)
+  RETURNING *;
+  `, [resources.creator_id, resources.title, resources.url, resources.description, resources.image_url])
+  .then((res) => {
 
-      console.log(res.rows[0])
-      return res.rows[0]
-    })
-  }
-  exports.createResources = createResources;
-
+    console.log(res.rows[0])
+    return res.rows[0]
+  })
+}
+exports.createResources = createResources;
