@@ -51,16 +51,16 @@ const getAllResources = function(){
 }
 exports.getAllResources = getAllResources;
 
-//add a resource
-const addResource = function(resource){
-  return pool.query(`
-    INSERT INTO resources (creator_id, title, url, description, image_url)
-    VALUES ($1, $2, $3, $4, $5)
-    RETURNING *;
-  `, [resource.creator_id, resource.title, resource.url, resource.description, resource.image_url])
-  .then(res => res.rows[0]);
-}
-exports.addResource = addResource;
+// //add a resource
+// const addResource = function(resource){
+//   return pool.query(`
+//     INSERT INTO resources (creator_id, title, url, description, image_url)
+//     VALUES ($1, $2, $3, $4, $5)
+//     RETURNING *;
+//   `, [resource.creator_id, resource.title, resource.url, resource.description, resource.image_url])
+//   .then(res => res.rows[0]);
+// }
+// exports.addResource = addResource;
 
 //add a comment
 const addComment = function(comment){
@@ -79,7 +79,7 @@ const addRating = function(rating){
     INSERT INTO ratings (user_id, resource_id, rating)
     VALUES ($1, $2, $3)
     RETURNING *;
-  `, [rating.user_id, rating.resource_id, rating.rating])
+  `, [ratings.user_id, ratings.resource_id, ratings.rating])
   .then(res => res.rows[0]);
   }
   exports.addRating = addRating;
@@ -95,3 +95,17 @@ const addFavourite = function(){
   }
   exports.addFavourite = addFavourite;
 
+//create resource
+  const createResources = function(resources){
+    return pool.query(`
+    INSERT INTO resources (creator_id, title, url, description, image_url)
+    VALUES ($1, $2, $3, $4, $5)
+    RETURNING *;
+    `, [resources.creator_id, resources.title, resources.url, resources.description, resources.fileupload])
+    .then((res) => {
+
+      console.log(res.rows[0])
+      return res.rows[0]
+    })
+  }
+  exports.createResources = createResources;
