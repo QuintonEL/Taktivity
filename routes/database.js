@@ -47,7 +47,7 @@ const getAllResources = function(){
     FROM resources
     LIMIT 15
   `, [])
-  .then(res => res.rows[0]);
+  .then(res => res.rows);
 }
 exports.getAllResources = getAllResources;
 
