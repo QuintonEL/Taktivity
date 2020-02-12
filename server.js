@@ -61,8 +61,14 @@ app.get("/", (req, res) => {
 
 app.get("/myResources", (req, res) => {
   const userId = req.session.userId;
+  if(!userId){
+    res.redirect('/')
+  }
   res.render("myResources", { userId });
+
 })
+
+
 
 app.listen(PORT, () => {
   console.log(`Taktivity app listening on port ${PORT}🇨🇦`);
