@@ -214,3 +214,55 @@ body {
 .mr-auto {
   margin-left: auto;
  }
+ .modal-content {
+  position: relative;
+  padding: 25px;
+  
+ }
+
+ .dynamic-content {
+   width: 50%;
+ }
+
+ img.resource-image {
+  height: 100%;
+    width: 40%;
+    object-fit: cover;
+    }
+
+.interaction-container {
+  text-align: center;
+  width: 45%;
+  position: absolute;
+  right: 25px;
+}
+
+.resource-title {
+  font-size: 15px;
+}
+.resource-description {
+  width: 100%;
+}
+
+.rating > span:hover:before {
+  content: "\2605";
+  position: absolute;
+  color: gray;
+}  
+
+.rating {
+  unicode-bidi: bidi-override;
+  direction: rtl;
+}
+.rating > span:hover:before,
+
+.rating > span:hover ~ span:before {
+   content: "\2605";
+   color: rgb(248, 223, 0);
+   position: absolute;
+}
+
+.add-to-favorites {
+  color: blue($color: #000000);
+}
+

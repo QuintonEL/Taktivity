@@ -12,7 +12,9 @@
     <link rel="stylesheet" href="/styles/layout.scss" type="text/css" />
 
     <script type="text/javascript" src="/scripts/app.js"></script>
-
+    <!-- JQUERY-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <%- include resource-modal.ejs %>
     <!-- Bootstrap -->
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
@@ -155,17 +157,21 @@
         <img class="user"src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"alt="user">
       </a>
     </div>
+    
+    <
     <!-- Main Content -->
     <div class="masonry-wrapper">
       <div class="masonry">
-        <div class="masonry-item">
-          <div class="masonry-content">
+        <div class="masonry-item" >
+          <div class="masonry-content" data-toggle="modal"
+          data-target="#resourcemodal">
             <img src="<%=data.image_url%>" alt="Resource Topic">
             <h3 class="masonry-title"><%=data.title%></h3>
             <p class="masonry-description"><%=data.description%></p>
           </div>
         </div>
-      <!-- <div class="masonry-item">
+        
+        <!-- <div class="masonry-item">
         <div class="masonry-content">
           <img src="https://picsum.photos/450/325?image=100" alt="Dummy Image">
           <h3 class="masonry-title">Nesciunt aspernatur eaque similique laudantium a</h3>
