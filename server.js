@@ -59,11 +59,9 @@ app.use("/api/resources", resourceRoutes(database));
 // Warning: avoid creating more routes in this file!
 // Separate them into separate routes files (see above).
 app.get("/", (req, res) => {
-  console.log('here')
   const userId = req.session.userId;
   database.getAllResources()
   .then(data => {
-    console.log('dataaaaaaa',data)
     // const resources = data.rows[0];
     // console.log('resources',resources)
     // renderResources(data)

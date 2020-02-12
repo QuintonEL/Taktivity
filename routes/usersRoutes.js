@@ -85,7 +85,6 @@ module.exports = (database) => {
       })
       .catch(e => {
         res.status(404).send({ error: e.message })
-        console.log('thisisamess', e)
       });
   });
 

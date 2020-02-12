@@ -1,14 +1,3 @@
-// $(() => {
-//   $.ajax({
-//     method: "GET",
-//     url: "/api/users"
-//   }).done((users) => {
-//     for(user of users) {
-//       $("<div>").text(user.name).appendTo($("body"));
-//     }
-//   });;
-// });
-
 jQuery(function($){
   // const loggedInUserId = $('#modalBtn').data("userid");
 
@@ -36,3 +25,4 @@ jQuery(function($){
     }, 'html')
   });
 });
+

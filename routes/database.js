@@ -81,10 +81,10 @@ const addRating = function(rating){
     RETURNING *;
   `, [ratings.user_id, ratings.resource_id, ratings.rating])
   .then(res => res.rows[0]);
-  }
-  exports.addRating = addRating;
+}
+exports.addRating = addRating;
 
-  //add a favourite
+//add a favourite
 const addFavourite = function(){
   return pool.query(`
     INSERT INTO favourites (resource_id, user_id,)
@@ -92,8 +92,8 @@ const addFavourite = function(){
     RETURNING *;
   `, [favourites.resource_id, favourites.user_id])
   .then(res => res.rows[0]);
-  }
-  exports.addFavourite = addFavourite;
+}
+exports.addFavourite = addFavourite;
 
 //create resource
   const createResources = function(resources){
