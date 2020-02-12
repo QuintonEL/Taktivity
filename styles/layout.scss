@@ -290,7 +290,7 @@ body {
 #image-buttons {
   display: flex;
   justify-content: space-between;
-  margin-left: 10%;
+  margin-left: 4%;
   margin-top: 4%;
 }
 
@@ -321,16 +321,13 @@ body{
   background-color: rgb(23, 22, 22);
 }
 
-// #create-post h1 {
-//   font-family: fantasy;
-// }
-
 .description{
   width: 80%;
   height: 100px;
   border-radius: 5px;
   border: 1px solid;
   border-color: #ff0000;
+  margin-bottom: 3px;
 }
 
 .button-create{
@@ -354,4 +351,10 @@ body{
   border: rgb(255, 0, 0);
   margin-top: 2%;
   margin-left: 12%;
+}
+
+.url, .image_url{
+  border: solid 1px red;
+  border-radius: 5px;
+  margin-bottom: 10px;
 }

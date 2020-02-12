@@ -9,7 +9,7 @@ router.post('/new', (req, res) => {
   console.log(newResourceData)
   database.createResources(newResourceData)
     .then(data => {
-
+      res.redirect('/');
     })
     .catch(err => {
       res.status(500)

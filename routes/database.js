@@ -96,16 +96,16 @@ const addFavourite = function(){
 exports.addFavourite = addFavourite;
 
 //create resource
-  const createResources = function(resources){
-    return pool.query(`
-    INSERT INTO resources (creator_id, title, url, description, image_url)
-    VALUES ($1, $2, $3, $4, $5)
-    RETURNING *;
-    `, [resources.creator_id, resources.title, resources.url, resources.description, resources.fileupload])
-    .then((res) => {
+const createResources = function(resources){
+  return pool.query(`
+  INSERT INTO resources (creator_id, title, url, description, image_url)
+  VALUES ($1, $2, $3, $4, $5)
+  RETURNING *;
+  `, [resources.creator_id, resources.title, resources.url, resources.description, resources.image_url])
+  .then((res) => {
 
-      console.log(res.rows[0])
-      return res.rows[0]
-    })
-  }
-  exports.createResources = createResources;
+    console.log(res.rows[0])
+    return res.rows[0]
+  })
+}
+exports.createResources = createResources;
