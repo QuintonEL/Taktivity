@@ -152,7 +152,7 @@
         <img id="userIcon" class="user"src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png"alt="user">
       </a>
     </div>
-    
+
     <
     <!-- Main Content -->
 
@@ -163,12 +163,14 @@
           <div class="masonry-content" data-toggle="modal"
           data-target="#resourcemodal">
             <img src="<%=data[i].image_url%>" alt="Resource Topic">
+            <a href="<%=data[i].url%>" target="_blank">
             <h3 class="masonry-title"><%=data[i].title%></h3>
+            </a>
             <p class="masonry-description"><%=data[i].description%></p>
           </div>
         </div>
         <%}%>
-<!-- 
+<!--
         <div class="masonry-wrapper">
           <div class="masonry">
             <div class="masonry-item" >

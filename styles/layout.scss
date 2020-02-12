@@ -148,7 +148,9 @@ body {
   transition: 0.3s;
 }
 
-.masonry-item:hover {opacity: 0.7;}
+.masonry-item:hover {
+  border: solid 1px red;
+}
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
   .masonry {
