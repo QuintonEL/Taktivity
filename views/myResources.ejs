@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>myResources</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <link rel="stylesheet" href="/vendor/normalize-4.1.1.css" type="text/css" />
+  <link rel="stylesheet" href="/vendor/border-box.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
+  <link rel="stylesheet" href="/styles/layout.scss" type="text/css" />
+  <link rel="stylesheet" href="../public/styles/categories.css" type= "text.css"/>
+
+  <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
+  <script type="text/javascript" src="/scripts/app.js"></script>
+
+  <!-- Bootstrap -->
+  <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
+    integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body>
+  <!-- Modal Signup -->
+  <div class="modal fade" id="darkModalForm" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog form-dark" role="document">
+      <!--Content-->
+      <div class="modal-content card card-image"
+        style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
+        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+          <!--Header-->
+          <div class="modal-header text-center pb-4">
+            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>SIGN</strong> <a
+                class="green-text font-weight-bold"><strong> UP</strong></a></h3>
+            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!--Body-->
+          <form id="signUp" class="modal-body">
+            <!--Body-->
+            <div class="md-form mb-5">
+              <input name="email" type="email" id="Form-email5" class="form-control validate white-text">
+              <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
+            </div>
+            <div class="md-form pb-3">
+              <input name="password" type="password" id="Form-pass5" class="form-control validate white-text">
+              <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
+              <div class="form-group mt-4">
+                <input class="form-check-input" type="checkbox" id="checkbox624">
+                <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#"
+                    class="green-text font-weight-bold">
+                    Terms and Conditions</a></label>
+              </div>
+            </div>
+            <!--Grid row-->
+            <div class="row d-flex align-items-center mb-4">
+              <!--Grid column-->
+              <div class="text-center mb-3 col-md-12">
+                <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Sign up</button>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-12">
+                <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#"
+                    class="green-text ml-1 font-weight-bold">
+                    Log in</a></p>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </form>
+          <!-- Modal -->
+
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <!-- Modal -->
+
+  <div class="modal fade" id="darkModalForm-login" tabindex="-1" role="dialog" aria-labelledby="myModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog form-dark" role="document">
+      <!--Content-->
+      <div class="modal-content card card-image"
+        style="background-image: url('https://mdbootstrap.com/img/Photos/Others/pricing-table%20(7).jpg');">
+        <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+          <!--Header-->
+          <div class="modal-header text-center pb-4">
+            <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel-login"><strong>LOG</strong> <a
+                class="green-text font-weight-bold"><strong> IN</strong></a></h3>
+            <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <!--Body-->
+          <form id="login" class="modal-body">
+            <!--Body-->
+            <div class="md-form mb-5">
+              <input name="email" type="email" id="Form-email5-login" class="form-control validate white-text">
+              <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
+            </div>
+            <div class="md-form pb-3">
+              <input name="password" type="password" id="Form-pass5-login" class="form-control validate white-text">
+              <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
+              <div class="form-group mt-4">
+                <input class="form-check-input" type="checkbox" id="checkbox624-login">
+                <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#"
+                    class="green-text font-weight-bold">
+                    Terms and Conditions</a></label>
+              </div>
+            </div>
+            <!--Grid row-->
+            <div class="row d-flex align-items-center mb-4">
+              <!--Grid column-->
+              <div class="text-center mb-3 col-md-12">
+                <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Log In</button>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+            <!--Grid row-->
+            <div class="row">
+              <!--Grid column-->
+              <div class="col-md-12">
+                <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#"
+                    class="green-text ml-1 font-weight-bold">
+                    Log in</a></p>
+              </div>
+              <!--Grid column-->
+            </div>
+            <!--Grid row-->
+          </form>
+          <!-- Modal -->
+
+        </div>
+      </div>
+      <!--/.Content-->
+    </div>
+  </div>
+  <div class="topnav">
+    <a class="home" href="/">
+      <img class="logo" src="./img/logo.png" alt="logo">
+    </a>
+    <!-- Search form -->
+    <input class="search" type="text" placeholder="Search">
+    <% if (userId) { %>
+    <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= userId %>">Logout</a>
+    <% }else{ %>
+    <a id="modalBtn-login" href="" class="btn btn-default btn-rounded" data-toggle="modal"
+      data-target="#darkModalForm-login">Login</a>
+    <a id="modalBtn" href="" class="btn btn-default btn-rounded" data-toggle="modal" data-target="#darkModalForm">Sign
+      Up</a>
+    <% } %>
+    <a class="user" href="/myResources">
+      <img class="user" src="https://cdn2.iconfinder.com/data/icons/ios-7-icons/50/user_male2-512.png" alt="user">
+    </a>
+  </div>
+
+  <section id="create-post">
+    <form action="/" method="POST">
+      <input type="file" class="choose-file" name="fileupload" value="fileupload">
+      <label for="fileupload"> Select a file to upload</label>
+      <div>
+        <h4>Title</h4>
+      <input type="text" name="title" maxlength="20" class="title" placeholder="Enter a title..">
+      </div>
+      <div>
+        <textarea name="description" class="description" placeholder="  Write a description.." maxlength="140"></textarea>
+      </div>
+      <br><input type="submit" class="button-create" alt="Submit" width="100">
+    </form>
+  </section>
+
+  <div>
+    <section id="image-buttons">
+      <span class="container">
+        <input type="image" src="https://png.pngtree.com/png-vector/20190313/ourmid/pngtree-math-calculations-png-image_779805.jpg" alt="Math">
+      </span>
+      <span class="container">
+        <input type="image" src="https://cdn1.iconfinder.com/data/icons/seo-and-web-development-color/64/seo-and-web-development-01-512.png" alt="Software">
+      </span>
+      <span class="container">
+        <input type="image" src="https://library.kissclipart.com/20180831/boe/kissclipart-science-symbols-clipart-symbol-clip-art-ce5cbc9f70d0c0c7.jpg" alt="Physics">
+      </span>
+      <span class="container">
+        <input type="image" src="https://www.pinclipart.com/picdir/middle/31-314343_chemistry-clipart-icon-png-transparent-png.png" alt="Chemestry">
+      </span>
+    </section>
+
+  </div>
+
+
+</body>
+
+</html>

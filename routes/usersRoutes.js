@@ -52,6 +52,7 @@ module.exports = (database) => {
   // Logout
   router.get('/logout', (req, res) => {
     req.session.userId = null;
+
     res.redirect("/")
   });
 
@@ -88,11 +89,14 @@ module.exports = (database) => {
       });
   });
 
-  router.get("/myAccount", (req, res) => {
+  router.get("/myResources", (req, res) => {
     const userId = req.session.userId;
+    console.log('userId', userId)
     if (!userId) {
-      res.send({ message: "not logged in" });
-      return;
+      console.log(userId)
+      res.redirect("/")
+      // res.send({ message: "not logged in" });
+      // return;
     }
 
     database.getUserById(userId)
@@ -106,6 +110,7 @@ module.exports = (database) => {
       })
       .catch(e => res.send(e));
   });
+
 
 
   return router;
