@@ -45,7 +45,7 @@ const getAllResources = function(){
   return pool.query(`
     SELECT *
     FROM resources
-    LIMIT 15;
+    LIMIT 100;
   `, [])
   .then(res => res.rows);
 }
@@ -100,10 +100,10 @@ exports.addFavourite = addFavourite;
 //create resource
 const createResources = function(resources){
   return pool.query(`
-  INSERT INTO resources (creator_id, title, url, description, image_url)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO resources (creator_id, title, url, description, image_url, topic)
+  VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *;
-  `, [resources.creator_id, resources.title, resources.url, resources.description, resources.image_url])
+  `, [resources.creator_id, resources.title, resources.url, resources.description, resources.image_url, resources.topic])
   .then((res) => {
 
     console.log(res.rows[0])
