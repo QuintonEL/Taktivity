@@ -18,7 +18,6 @@ module.exports = (database) => {
   //limit function calls
   router.get('/', (req, res) => {
     res.send('homepage')
-    console.log(req, res)
     database.getAllResources()
       .then(data => {
         const resources = data.rows;
@@ -37,16 +36,15 @@ module.exports = (database) => {
     const user = req.body;
     user.password = bcrypt.hashSync(user.password, 12);
     database.getUserByEmail(user.email)
-    .then(user => {
-      console.log('user2',user)
-      if (!user) {
-        res.send({ error: "error" });
+    .then(existingUser => {
+      if (existingUser) {
+        res.send({ error: "email has been taken" });
         return;
       }
       database.addUser(user)
-        req.session.userId = user.id;
-        res.send(":hugging_face:");
-      })
+      req.session.userId = user.id;
+      res.send("New Account Created");
+    })
       .catch(e => res.send(e));
   });
   // Logout
