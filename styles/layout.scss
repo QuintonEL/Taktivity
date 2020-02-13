@@ -69,7 +69,7 @@ form-dark .font-small {
   
   margin-left: 2em;
   
-  color: rgb(155, 221, 220);
+  color: rgb(108, 96, 119);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
   background-color: rgb(80, 68, 90);
@@ -100,7 +100,7 @@ form-dark .font-small {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  background-color: rgb(26, 120, 187);
+  background-color: rgb(108, 96, 119);
   border-top: 2px solid rgb(73, 55, 90);
   border-left: 2px solid rgb(73, 55, 90);
   border-right: 1px solid rgb(148, 94, 133);
@@ -114,7 +114,7 @@ form-dark .font-small {
 /* Add a black background color to the top navigation */
 .topnav {
   background-color: rgb(80, 68, 90);
-  border-bottom: 2px solid rgb(77, 65, 88);
+  
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -124,7 +124,7 @@ form-dark .font-small {
 
 /* Style the links inside the navigation barrrr */
 .topnav .home {
-  background-color: #285864;
+  background-color: #022C44;
   
   float: left;
   color: #f2f2f2;
@@ -136,7 +136,7 @@ form-dark .font-small {
 
 /* Change the color of links on hover */
 .topnav .home:hover {
-  background-color: #D35050;
+  background-color: #004F89;
   color: #285864;
 }
 
