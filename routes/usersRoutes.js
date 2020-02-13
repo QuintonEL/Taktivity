@@ -51,7 +51,6 @@ module.exports = (database) => {
   // Logout
   router.get('/logout', (req, res) => {
     req.session.userId = null;
-
     res.redirect("/")
   });
 
@@ -108,8 +107,6 @@ module.exports = (database) => {
       })
       .catch(e => res.send(e));
   });
-
-
 
   return router;
 };
