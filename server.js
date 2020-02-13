@@ -62,11 +62,10 @@ app.get("/", (req, res) => {
   const userId = req.session.userId;
   database.getAllResources()
   .then(data => {
-    // const resources = data.rows[0];
-    // console.log('resources',resources)
-    // renderResources(data)
-    res.render("index", { userId, data });
-    // res.render({ resources });
+    database.getUserById(userId)
+    .then(userInfo => {
+      res.render("index", { userId, data, userInfo });
+    })
   })
   .catch(err => {
     res
