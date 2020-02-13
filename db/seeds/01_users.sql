@@ -8,13 +8,13 @@ VALUES ('alicehope@gmail.com', 'password'),
 ('judithscots@gmail.com', 'password');
 
 
-INSERT INTO resources (creator_id, title, url, description, image_url)
-VALUES (1, 'Partial Fractions', 'http://tutorial.math.lamar.edu/Classes/CalcII/PartialFractions.aspx', 'Partial fraction decomposition tutorial on Paul&#39s Notes', 'https://www.itweb.co.za/static/pictures/2018/05/resized/-fs-Math-2018.xl.jpg'),
-(2, 'Quantum Mechanics and the Schrodinger Equation', 'https://www.youtube.com/watch?v=O6g-7rUgrdg', 'Okay, it&#39s time to dig into quantum mechanics!', 'https://www.irishtimes.com/polopoly_fs/1.3930778.1560950858!/image/image.jpg_gen/derivatives/box_620_330/image.jpg'),
-(3, 'IBM Essentials of Software Development', 'https://www.ibm.com/topics/software-development', 'IBM Introduction to software development', 'https://www.plm.automation.siemens.com/media/global/en/is-871030872-640x360_tcm27-49145.jpg'),
-(4, 'Intro to Chemistry', 'https://www.khanacademy.org/science/chemistry', 'Intro to Atoms, Compounds and Icons', 'https://www.yu.edu/sites/default/files/ThinkstockPhotos-658148844.jpg'),
-(5, 'String Theory: A Beginner&#39s Guide','https://www.newscientist.com/article/dn16950-string-theory-a-beginners-guide/', 'String theory is one of the most famous ideas in modern physics, but it is also one of the most confusing. Give this guide a read!', 'https://www.yu.edu/sites/default/files/ThinkstockPhotos-658148844.jpg'),
-(6, 'What Is Astrophysics', 'https://www.space.com/26218-astrophysics.html', 'Astrophysics is essential to explaining the universe.', 'https://www.yu.edu/sites/default/files/ThinkstockPhotos-658148844.jpg');
+INSERT INTO resources (creator_id, title, url, description, image_url, topic)
+VALUES (1, 'Partial Fractions', 'http://tutorial.math.lamar.edu/Classes/CalcII/PartialFractions.aspx', 'Partial fraction decomposition tutorial on Paul&#39s Notes', 'https://www.itweb.co.za/static/pictures/2018/05/resized/-fs-Math-2018.xl.jpg', 'math'),
+(2, 'Quantum Mechanics and the Schrodinger Equation', 'https://www.youtube.com/watch?v=O6g-7rUgrdg', 'Okay, it&#39s time to dig into quantum mechanics!', 'https://www.irishtimes.com/polopoly_fs/1.3930778.1560950858!/image/image.jpg_gen/derivatives/box_620_330/image.jpg', 'physics'),
+(3, 'IBM Essentials of Software Development', 'https://www.ibm.com/topics/software-development', 'IBM Introduction to software development', 'https://www.plm.automation.siemens.com/media/global/en/is-871030872-640x360_tcm27-49145.jpg', 'software'),
+(4, 'Intro to Chemistry', 'https://www.khanacademy.org/science/chemistry', 'Intro to Atoms, Compounds and Icons', 'https://www.yu.edu/sites/default/files/ThinkstockPhotos-658148844.jpg', 'chemistry'),
+(5, 'String Theory: A Beginner&#39s Guide','https://www.newscientist.com/article/dn16950-string-theory-a-beginners-guide/', 'String theory is one of the most famous ideas in modern physics, but it is also one of the most confusing. Give this guide a read!', 'https://www.yu.edu/sites/default/files/ThinkstockPhotos-658148844.jpg', 'physics'),
+(6, 'What Is Astrophysics', 'https://www.space.com/26218-astrophysics.html', 'Astrophysics is essential to explaining the universe.', 'https://www.yu.edu/sites/default/files/ThinkstockPhotos-658148844.jpg', 'physics');
 
 INSERT INTO categories (title)
 VALUES ('Math'), ('Physics'), ('Software'), ('Chemistry');

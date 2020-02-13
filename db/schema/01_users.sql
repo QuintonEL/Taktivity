@@ -23,7 +23,8 @@ CREATE TABLE resources(
   title VARCHAR(255) NOT NULL,
   url VARCHAR(255) NOT NULL,
   description VARCHAR(255),
-  image_url VARCHAR(255)
+  image_url VARCHAR(255),
+  topic VARCHAR(255)
 );
 
 CREATE TABLE categories(
