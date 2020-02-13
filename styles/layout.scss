@@ -66,9 +66,9 @@ form-dark .font-small {
 
 
 #modalBtn, #modalBtn-login{
-  
+
   margin-left: 2em;
-  
+
   color: rgb(155, 221, 220);
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
@@ -125,7 +125,7 @@ form-dark .font-small {
 /* Style the links inside the navigation barrrr */
 .topnav .home {
   background-color: #285864;
-  
+
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -170,9 +170,13 @@ body {
   transition: 0.3s;
 }
 
+.masonry-item h6 {
+  margin-left: 25px;
+}
+
 .masonry-item:hover {
   background-color: white;
-  
+
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
@@ -306,20 +310,25 @@ body {
 
 /* Make the image responsive */
 
-#image-buttons input{
-  width: 80%;
+#image-buttons .btn{
+  width: 20%;
   border: solid 1px white;
   transition: transform .2s; /* Animation */
+  background-color: grey;
+  font-size: 20px;
+  padding: 16px;
+  border-radius: 12px;
 }
-#image-buttons input:hover {
+#image-buttons .btn:hover {
   transform: scale(1.5);/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   box-shadow: 0 5px 5px 0 rgb(0, 0, 0);
 }
 #image-buttons {
   display: flex;
   justify-content: space-between;
-  margin-left: 4%;
   margin-top: 4%;
+  margin-left: 5%;
+  margin-right: 5%;
 }
 
 // background image
@@ -362,6 +371,7 @@ body{
   background-color: #D35050;
   border: solid;
   border: rgb(255, 255, 255);
+  margin-top: 2%;
 }
 
 .title{
@@ -372,7 +382,7 @@ body{
 
 .choose-file{
   border: 1px solid;
-  border-color: #D35050; 
+  border-color: #D35050;
 }
 
 .interaction-wrapper{
@@ -388,4 +398,11 @@ body{
 #logInName {
   color: red;
   margin-left: 40px;
+}
+
+.url {
+  margin-top: 2%;
+}
+.image_url {
+  margin-top: 2%;
 }
