@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/styles/layout.scss" type="text/css" />
 
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/helperFunctions.js"></script>
     <script type="text/javascript" src="/scripts/jquerystyling.js"></script>
     <!-- JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -140,7 +141,7 @@
         <img class="logo" src="./img/logo.png" alt="logo">
       </a>
       <!-- Search form -->
-      <input class="search" type="text" placeholder="Search">
+      <input id="myInput" class="search" type="text" onkeyup="searchResources()" placeholder="Search" name="q">
       <% if (userId) { %>
         <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= userId %>" >Logout</a> <span id="logInName">Logged In As: <b><%=userInfo.email%></b></span>
         <% }else{ %>
