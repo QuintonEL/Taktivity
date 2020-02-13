@@ -65,8 +65,6 @@ app.get("/", (req, res) => {
     console.log('some data', data)
     database.getUserById(userId)
     .then(userInfo => {
-      console.log('USERID', userId) //undefined????
-      console.log('userinfo',userInfo) //undefined????
       res.render("index", { userId, data, userInfo });
     })
   })

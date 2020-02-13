@@ -45,8 +45,10 @@ module.exports = (database) => {
         return;
       }
       database.addUser(user)
-      req.session.userId = user.id;
-      res.send("New Account Created");
+      .then(newUser => {
+        req.session.userId = newUser.id;
+        res.send({ user: {email: user.email, id: user.id} });
+      })
       console.log('New Account Created')
     })
       .catch(e => res.send(e));

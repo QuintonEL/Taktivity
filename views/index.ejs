@@ -189,13 +189,13 @@
               </div>
 
               <div class="interaction-container" >
-                <div id="respond" >
-                  <form action="post_comment.php" method="post" id="commentform">
+                <div id="respond">
+                  <form action="post_comment.php" method="post" id="commentform<%=i%>">
 
-                    <textarea class="comment-field" name="comment" id="comment" rows="3"
+                    <textarea class="comment-field" name="comment" id="comment<%=i%>" rows="3"
                     tabindex="4"  required="required" placeholder="Leave a comment!"></textarea>
 
-                    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+                    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_<%=i%>" />
                     <input name="submit" type="submit" value="Submit comment" />
 
                   </form>
@@ -204,7 +204,7 @@
                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                   </div>
                 </div>
-                  <button class="add-to-favorites" onclick="myFunction()"> Favorite this?</button>
+                  <button id="add<%=i%>" class="add-to-favorites"> Favorite</button>
               </div>
             </div>
           </div>

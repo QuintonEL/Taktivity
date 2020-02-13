@@ -39,5 +39,18 @@ module.exports = (database) => {
         res.json({ error: err.message });
       })
   })
+
+  //path for favouriting a post
+  router.post('/myResources', (req,res) => {
+    console.log('made ittt', req.body.resource_id)
+    console.log('user', req.session.userId)
+    const user_id = req.session.userId;
+    const resource_id = Number(req.body.resource_id);
+    const favouriteResource = { user_id, resource_id };
+    console.log(favouriteResource)
+    database.addFavourite(favouriteResource)
+  })
+
+
 return router;
 }
