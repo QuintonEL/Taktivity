@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <title>Home Page</title>
+    <title>Taktivity</title>
 
     <link rel="icon"
     type="image/png"
@@ -16,6 +16,7 @@
     <link rel="stylesheet" href="/styles/layout.scss" type="text/css" />
 
     <script type="text/javascript" src="/scripts/app.js"></script>
+    <script type="text/javascript" src="/scripts/helperFunctions.js"></script>
     <script type="text/javascript" src="/scripts/jquerystyling.js"></script>
     <!-- JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -46,14 +47,14 @@
             <form id="signUp" class="modal-body">
               <!--Body-->
               <div class="md-form mb-5">
-                <input name="email" type="email" id="Form-email5" class="form-control validate white-text">
+                <input name="email" type="email" id="Form-email5" class="form-control validate white-text" required>
                 <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
               </div>
               <div class="md-form pb-3">
-                <input name="password" type="password" id="Form-pass5" class="form-control validate white-text">
+                <input name="password" type="password" id="Form-pass5" class="form-control validate white-text" required>
                 <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
                 <div class="form-group mt-4">
-                  <input class="form-check-input" type="checkbox" id="checkbox624">
+                  <input class="form-check-input" type="checkbox" id="checkbox624" required>
                   <label for="checkbox624" class="white-text form-check-label">Accept the<a href="#" class="green-text font-weight-bold">
                       Terms and Conditions</a></label>
                 </div>
@@ -105,11 +106,11 @@
             <form id="login" class="modal-body">
               <!--Body-->
               <div class="md-form mb-5">
-                <input name="email" type="email" id="Form-email5-login" class="form-control validate white-text">
+                <input name="email" type="email" id="Form-email5-login" class="form-control validate white-text" required>
                 <label data-error="wrong" data-success="right" for="Form-email5">Your email</label>
               </div>
               <div class="md-form pb-3">
-                <input name="password" type="password" id="Form-pass5-login" class="form-control validate white-text">
+                <input name="password" type="password" id="Form-pass5-login" class="form-control validate white-text" required>
                 <label data-error="wrong" data-success="right" for="Form-pass5">Your password</label>
               </div>
               <!--Grid row-->
@@ -140,9 +141,10 @@
         <img class="logo" src="./img/logo.png" alt="logo">
       </a>
       <!-- Search form -->
-      <input class="search" type="text" placeholder="Search">
+      <input id="myInput" class="search" type="text" onkeyup="searchResources()" placeholder="Search" name="q">
       <% if (userId) { %>
-        <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= userId %>" >Logout</a> <span id="logInName">Logged In As: <b><%=userInfo.email%></b></span>
+        <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= userId %>" >Logout</a>
+        <span>Logged in As: <%=userInfo.email%></span>
         <% }else{ %>
         <a id="modalBtn-login" href="" class="btn btn-default btn-rounded" data-toggle="modal"
             data-target="#darkModalForm-login">Login</a>
@@ -161,268 +163,53 @@
       <div class="masonry">
         <%for (let i = 0; i < data.length; i++) {%>
         <div class="masonry-item">
-          
+
           <div class="masonry-content" data-toggle="modal"
           data-target="#resourcemodal<%=[i]%>">
             <img src="<%=data[i].image_url%>" alt="Resource Topic">
             <a href="<%=data[i].url%>" target="_blank">
-            <h3 class="masonry-title" onclick="event.stopPropagation()" ><%=data[i].title%></h3>
+              <h3 class="masonry-title" onclick="event.stopPropagation()" ><%=data[i].title%></h3>
             </a>
+            <h6><%=data[i].topic%></h6>
             <p class="masonry-description"><%=data[i].description%></p>
           </div>
-         
+
         </div>
-        
+
        <div id="resourcemodal<%=[i]%>" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
-              
+
                 <img class="resource-image" src="<%=data[i].image_url%>" alt="Dummy Image" >
               <div class="dynamic-content">
-                <h3 class="resource-title"><%=data[i].title%></h3>
+                <a href="<%=data[i].url%>" target="_blank">
+                  <h3 class="resource-title"><%=data[i].title%></h3>
+                </a>
                 <p class="resource-description"><%=data[i].description%></p>
               </div>
-              
+
               <div class="interaction-container" >
-                <div id="respond" >
-                  <form action="post_comment.php" method="post" id="commentform">
-                  
-                    <textarea class="comment-field" name="comment" id="comment" rows="3" 
+                <div id="respond">
+                  <form action="post_comment.php" method="post" id="commentform<%=i%>">
+
+                    <textarea class="comment-field" name="comment" id="comment<%=i%>" rows="3"
                     tabindex="4"  required="required" placeholder="Leave a comment!"></textarea>
 
-                    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+                    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_<%=i%>" />
                     <input name="submit" type="submit" value="Submit comment" />
 
-                  </form>  
+                  </form>
                 </div>
                   <div class="rating">
                     <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
                   </div>
                 </div>
-                  <button class="add-to-favorites" onclick="myFunction()"> Favorite this?</button> 
+                  <button id="add<%=i%>" class="add-to-favorites"> Favorite</button>
               </div>
             </div>
           </div>
-        
+
         <%}%>
-
-
-        
-
-        <!--
-        <div class="masonry-wrapper">
-          <div class="masonry">
-            <div class="masonry-item" >
-              <div class="masonry-content" >
-                <img src="<%=data.image_url%>" alt="Resource Topic">
-                <h3 class="masonry-title"><%=data.title%></h3>
-                <p class="masonry-description"><%=data.description%></p>
-              </div>
-            </div> -->
-
-      <!-- <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/325?image=100" alt="Dummy Image">
-          <h3 class="masonry-title">Nesciunt aspernatur eaque similique laudantium a</h3>
-          <p class="masonry-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi inventore, totam vero consequuntur, aut animi veritatis tempora nulla facere placeat velit illum explicabo dicta enim ipsum. Vitae ducimus, ratione.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/450?image=200" alt="Dummy Image">
-          <h3 class="masonry-title">Consequatur adipisci neque possimus quod ut quidem omnis numquam dolorum</h3>
-          <p class="masonry-description">Consectetur adipisicing elit. Sit enim ipsam mollitia repellat nemo, accusantium? Fugit id ipsam libero vitae quas perferendis, delectus a amet perspiciatis iusto. Quia, quam, culpa.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/280?image=300" alt="Dummy Image">
-          <h3 class="masonry-title">Adipisci alias ullam est accusamus</h3>
-          <p class="masonry-description">Adipisci repellendus ratione laudantium nisi eaque voluptatem fuga quod hic, explicabo amet at laborum maiores ducimus et a vel quidem dolorem modi.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/540?image=400" alt="Dummy Image">
-          <h3 class="masonry-title">Dolor sit amet, consectetur adipisicing elit</h3>
-          <p class="masonry-description">Vitae est numquam, dolore, ipsum tempora molestiae. Ut optio natus velit eaque tempora commodi dolor doloremque error quidem labore, incidunt odit est nobis numquam. Ullam quas minima, neque modi reiciendis consequuntur inventore!</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/380?image=500" alt="Dummy Image">
-          <h3 class="masonry-title">Veritatis aut repellendus, quidem nesciunt consequatur nulla sed itaque</h3>
-          <p class="masonry-description">Expedita voluptate similique ad harum dolorem nam ipsa repellat quos, autem eius magni minima, asperiores nobis repudiandae ut quibusdam atque! Delectus atque veniam labore suscipit ullam, consequuntur dicta, tenetur est nulla, quod obcaecati similique?</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/300?image=600" alt="Dummy Image">
-          <h3 class="masonry-title">Culpa quo animi ut temporibus, et distinctio facere perspiciatis saepe sunt unde</h3>
-          <p class="masonry-description">Iusto magni quasi recusandae autem ipsum asperiores consequatur explicabo, vero nam iste quas sequi reiciendis quod, quos!</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/400?image=700" alt="Dummy Image">
-          <h3 class="masonry-title">Molestiae quod consectetur enim modi unde expedita dicta placeat?</h3>
-          <p class="masonry-description">Aliquam laudantium mollitia quo sint maxime omnis repellendus beatae. Consequuntur molestias odio sapiente. Officia minima, nisi! Tempora vero, architecto ducimus animi nostrum nobis aliquid eligendi illo, facilis temporibus.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/300?image=800" alt="Dummy Image">
-          <h3 class="masonry-title">Sit amet, consectetur adipisicing elit. Incidunt, commodi!</h3>
-          <p class="masonry-description">Accusamus culpa maxime harum minus ipsa ea qui, blanditiis sequi debitis. Temporibus quisquam consequatur dolor, aliquid odio nulla dolorum animi quasi et! Reiciendis ipsum repellendus quaerat explicabo, laboriosam amet, temporibus at sed voluptatibus, minima quia.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/280?image=900" alt="Dummy Image">
-          <h3 class="masonry-title">Inventore ducimus, voluptate a nostrum molestiae non</h3>
-          <p class="masonry-description">Similique officia recusandae, at labore quae, minus aspernatur cupiditate repellendus optio nesciunt iure aliquid praesentium, omnis, quas est natus temporibus aliquam vero.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/480?image=925" alt="Dummy Image">
-          <h3 class="masonry-title">Voluptatum nisi, nostrum eaque consequatur officiis similique!</h3>
-          <p class="masonry-description">Soluta eius itaque, molestiae laborum! Facere velit reiciendis quis architecto vel minima consequuntur voluptates temporibus consequatur, aperiam maiores! Perferendis quos architecto quaerat, aliquid earum culpa labore.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/550?image=950" alt="Dummy Image">
-          <h3 class="masonry-title">Perspiciatis non voluptatibus quo ab doloremque accusantium</h3>
-          <p class="masonry-description">Eligendi similique excepturi cumque nemo modi voluptates mollitia atque doloribus, laborum magnam itaque a! Dignissimos expedita vel minus impedit laudantium.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/325?image=25" alt="Dummy Image">
-          <h3 class="masonry-title">Nesciunt aspernatur eaque similique laudantium a</h3>
-          <p class="masonry-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi inventore, totam vero consequuntur, aut animi veritatis tempora nulla facere placeat velit illum explicabo dicta enim ipsum. Vitae ducimus, ratione.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/450?image=50" alt="Dummy Image">
-          <h3 class="masonry-title">Consequatur adipisci neque possimus quod ut quidem omnis numquam dolorum</h3>
-          <p class="masonry-description">Consectetur adipisicing elit. Sit enim ipsam mollitia repellat nemo, accusantium? Fugit id ipsam libero vitae quas perferendis, delectus a amet perspiciatis iusto. Quia, quam, culpa.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/280?image=75" alt="Dummy Image">
-          <h3 class="masonry-title">Adipisci alias ullam est accusamus</h3>
-          <p class="masonry-description">Adipisci repellendus ratione laudantium nisi eaque voluptatem fuga quod hic, explicabo amet at laborum maiores ducimus et a vel quidem dolorem modi.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/540?image=100" alt="Dummy Image">
-          <h3 class="masonry-title">Dolor sit amet, consectetur adipisicing elit</h3>
-          <p class="masonry-description">Vitae est numquam, dolore, ipsum tempora molestiae. Ut optio natus velit eaque tempora commodi dolor doloremque error quidem labore, incidunt odit est nobis numquam. Ullam quas minima, neque modi reiciendis consequuntur inventore!</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/380?image=125" alt="Dummy Image">
-          <h3 class="masonry-title">Veritatis aut repellendus, quidem nesciunt consequatur nulla sed itaque</h3>
-          <p class="masonry-description">Expedita voluptate similique ad harum dolorem nam ipsa repellat quos, autem eius magni minima, asperiores nobis repudiandae ut quibusdam atque! Delectus atque veniam labore suscipit ullam, consequuntur dicta, tenetur est nulla, quod obcaecati similique?</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/300?image=161" alt="Dummy Image">
-          <h3 class="masonry-title">Culpa quo animi ut temporibus, et distinctio facere perspiciatis saepe sunt unde</h3>
-          <p class="masonry-description">Iusto magni quasi recusandae autem ipsum asperiores consequatur explicabo, vero nam iste quas sequi reiciendis quod, quos!</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/400?image=175" alt="Dummy Image">
-          <h3 class="masonry-title">Molestiae quod consectetur enim modi unde expedita dicta placeat?</h3>
-          <p class="masonry-description">Aliquam laudantium mollitia quo sint maxime omnis repellendus beatae. Consequuntur molestias odio sapiente. Officia minima, nisi! Tempora vero, architecto ducimus animi nostrum nobis aliquid eligendi illo, facilis temporibus.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/300?image=200" alt="Dummy Image">
-          <h3 class="masonry-title">Sit amet, consectetur adipisicing elit. Incidunt, commodi!</h3>
-          <p class="masonry-description">Accusamus culpa maxime harum minus ipsa ea qui, blanditiis sequi debitis. Temporibus quisquam consequatur dolor, aliquid odio nulla dolorum animi quasi et! Reiciendis ipsum repellendus quaerat explicabo, laboriosam amet, temporibus at sed voluptatibus, minima quia.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/280?image=225" alt="Dummy Image">
-          <h3 class="masonry-title">Inventore ducimus, voluptate a nostrum molestiae non</h3>
-          <p class="masonry-description">Similique officia recusandae, at labore quae, minus aspernatur cupiditate repellendus optio nesciunt iure aliquid praesentium, omnis, quas est natus temporibus aliquam vero.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/480?image=250" alt="Dummy Image">
-          <h3 class="masonry-title">Voluptatum nisi, nostrum eaque consequatur officiis similique!</h3>
-          <p class="masonry-description">Soluta eius itaque, molestiae laborum! Facere velit reiciendis quis architecto vel minima consequuntur voluptates temporibus consequatur, aperiam maiores! Perferendis quos architecto quaerat, aliquid earum culpa labore.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/550?image=275" alt="Dummy Image">
-          <h3 class="masonry-title">Perspiciatis non voluptatibus quo ab doloremque accusantium</h3>
-          <p class="masonry-description">Eligendi similique excepturi cumque nemo modi voluptates mollitia atque doloribus, laborum magnam itaque a! Dignissimos expedita vel minus impedit laudantium.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/600?image=300" alt="Dummy Image">
-          <h3 class="masonry-title">Quam id laudantium debitis perferendis neque perspiciatis!</h3>
-          <p class="masonry-description">Deleniti blanditiis iste cupiditate ea obcaecati corporis, quas nobis possimus molestiae. Sed, minima.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/325?image=13" alt="Dummy Image">
-          <h3 class="masonry-title">Nesciunt aspernatur eaque similique laudantium a</h3>
-          <p class="masonry-description">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Assumenda modi inventore, totam vero consequuntur, aut animi veritatis tempora nulla facere placeat velit illum explicabo dicta enim ipsum. Vitae ducimus, ratione.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/450?image=26" alt="Dummy Image">
-          <h3 class="masonry-title">Consequatur adipisci neque possimus quod ut quidem omnis numquam dolorum</h3>
-          <p class="masonry-description">Consectetur adipisicing elit. Sit enim ipsam mollitia repellat nemo, accusantium? Fugit id ipsam libero vitae quas perferendis, delectus a amet perspiciatis iusto. Quia, quam, culpa.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/280?image=39" alt="Dummy Image">
-          <h3 class="masonry-title">Adipisci alias ullam est accusamus</h3>
-          <p class="masonry-description">Adipisci repellendus ratione laudantium nisi eaque voluptatem fuga quod hic, explicabo amet at laborum maiores ducimus et a vel quidem dolorem modi.</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/540?image=52" alt="Dummy Image">
-          <h3 class="masonry-title">Dolor sit amet, consectetur adipisicing elit</h3>
-          <p class="masonry-description">Vitae est numquam, dolore, ipsum tempora molestiae. Ut optio natus velit eaque tempora commodi dolor doloremque error quidem labore, incidunt odit est nobis numquam. Ullam quas minima, neque modi reiciendis consequuntur inventore!</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/380?image=65" alt="Dummy Image">
-          <h3 class="masonry-title">Veritatis aut repellendus, quidem nesciunt consequatur nulla sed itaque</h3>
-          <p class="masonry-description">Expedita voluptate similique ad harum dolorem nam ipsa repellat quos, autem eius magni minima, asperiores nobis repudiandae ut quibusdam atque! Delectus atque veniam labore suscipit ullam, consequuntur dicta, tenetur est nulla, quod obcaecati similique?</p>
-        </div>
-      </div>
-      <div class="masonry-item">
-        <div class="masonry-content">
-          <img src="https://picsum.photos/450/300?image=78" alt="Dummy Image">
-          <h3 class="masonry-title">Culpa quo animi ut temporibus, et distinctio facere perspiciatis saepe sunt unde</h3>
-          <p class="masonry-description">Iusto magni quasi recusandae autem ipsum asperiores consequatur explicabo, vero nam iste quas sequi reiciendis quod, quos!</p>
-        </div>
-      </div> -->
     </div>
     <div class="masonry-footer">
       <p>Created with &#10084; with <a href="//w3bits.com/tools/masonry-generator/" target="_blank" rel="external noopener nofollow">CSS Masonry Generator</a></p>

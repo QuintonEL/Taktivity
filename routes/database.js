@@ -45,7 +45,7 @@ const getAllResources = function(){
   return pool.query(`
     SELECT *
     FROM resources
-    LIMIT 15;
+    LIMIT 100;
   `, [])
   .then(res => res.rows);
 }
@@ -76,7 +76,7 @@ return pool.query(`
 exports.addComment = addComment;
 
 //add a rating
-const addRating = function(rating){
+const addRating = function(ratings){
   return pool.query(`
     INSERT INTO ratings (user_id, resource_id, rating)
     VALUES ($1, $2, $3)
@@ -87,23 +87,36 @@ const addRating = function(rating){
 exports.addRating = addRating;
 
 //add a favourite
-const addFavourite = function(){
+const addFavourite = function(favourites){
   return pool.query(`
-    INSERT INTO favourites (resource_id, user_id,)
+    INSERT INTO favourites (user_id, resource_id)
     VALUES ($1, $2)
     RETURNING *;
-  `, [favourites.resource_id, favourites.user_id])
+  `, [favourites.user_id, favourites.resource_id])
   .then(res => res.rows[0]);
 }
 exports.addFavourite = addFavourite;
 
+//get all user favourites
+const getFavourite = function(user_id) {
+  console.log('getting favourites')
+  return pool.query(`
+  SELECT *
+  FROM favourites
+  WHERE user_id = $1
+  LIMIT 100;
+  `, [userId])
+  .then(res => res.rows);
+}
+exports.getFavourite = getFavourite;
+
 //create resource
 const createResources = function(resources){
   return pool.query(`
-  INSERT INTO resources (creator_id, title, url, description, image_url)
-  VALUES ($1, $2, $3, $4, $5)
+  INSERT INTO resources (creator_id, title, url, description, image_url, topic)
+  VALUES ($1, $2, $3, $4, $5, $6)
   RETURNING *;
-  `, [resources.creator_id, resources.title, resources.url, resources.description, resources.image_url])
+  `, [resources.creator_id, resources.title, resources.url, resources.description, resources.image_url, resources.topic])
   .then((res) => {
 
     console.log(res.rows[0])
@@ -111,3 +124,4 @@ const createResources = function(resources){
   })
 }
 exports.createResources = createResources;
+
