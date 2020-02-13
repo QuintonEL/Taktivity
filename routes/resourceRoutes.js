@@ -29,7 +29,10 @@ module.exports = (database) => {
 
     database.getAllResourcesById(postOwner)
       .then(data => {
-        res.render("myResources", { userId: postOwner, data });
+        database.getUserById(postOwner)
+        .then(userInfo => {
+          res.render("myResources", { postOwner, data, userInfo });
+        })
       })
       .catch(err => {
         res.status(500)
