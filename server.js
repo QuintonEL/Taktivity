@@ -83,7 +83,6 @@ app.get("/myResources", (req, res) => {
 })
 
 
-
 app.listen(PORT, () => {
   console.log(`Taktivity app listening on port ${PORT}🇨🇦`);
 });
