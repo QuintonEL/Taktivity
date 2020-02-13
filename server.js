@@ -62,8 +62,11 @@ app.get("/", (req, res) => {
   const userId = req.session.userId;
   database.getAllResources()
   .then(data => {
+    console.log('some data', data)
     database.getUserById(userId)
     .then(userInfo => {
+      console.log('USERID', userId) //undefined????
+      console.log('userinfo',userInfo) //undefined????
       res.render("index", { userId, data, userInfo });
     })
   })
@@ -76,7 +79,7 @@ app.get("/", (req, res) => {
 });
 
 app.get("/myResources", (req, res) => {
-    res.redirect('/api/resources/myResources')
+  res.redirect('/api/resources/myResources')
 })
 
 
