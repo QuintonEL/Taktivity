@@ -100,7 +100,7 @@ form-dark .font-small {
   color: white;
   font-family: Arial, Helvetica, sans-serif;
   font-weight: bold;
-  background-color: rgb(99, 85, 110);
+  background-color: rgb(26, 120, 187);
   border-top: 2px solid rgb(73, 55, 90);
   border-left: 2px solid rgb(73, 55, 90);
   border-right: 1px solid rgb(148, 94, 133);
@@ -383,4 +383,9 @@ body{
 .comment_block {
   height: 250px;
   overflow: scroll;
+}
+
+#logInName {
+  color: red;
+  margin-left: 40px;
 }
