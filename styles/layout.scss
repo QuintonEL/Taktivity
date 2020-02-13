@@ -15,17 +15,17 @@ form-dark .font-small {
   color: #fff; }
 
 .form-dark input[type=email]:focus:not([readonly]) {
-  border-bottom: 1px solid #00C851;
-  -webkit-box-shadow: 0 1px 0 0 #00C851;
-  box-shadow: 0 1px 0 0 #00C851; }
+  border-bottom: 1px solid #FF8C03;
+  -webkit-box-shadow: 0 1px 0 0 #FF8C03;
+  box-shadow: 0 1px 0 0 #FF8C03; }
 
 .form-dark input[type=email]:focus:not([readonly]) + label {
   color: #fff; }
 
 .form-dark input[type=password]:focus:not([readonly]) {
-  border-bottom: 1px solid #00C851;
-  -webkit-box-shadow: 0 1px 0 0 #00C851;
-  box-shadow: 0 1px 0 0 #00C851; }
+  border-bottom: 1px solid #4B9998;
+  -webkit-box-shadow: 0 1px 0 0 #4B9998;
+  box-shadow: 0 1px 0 0 #4B9998; }
 
 .form-dark input[type=password]:focus:not([readonly]) + label {
   color: #fff; }
@@ -51,7 +51,7 @@ form-dark .font-small {
   height: 22px;
   border-style: solid;
   border-width: 2px;
-  border-color: transparent #00c851 #00c851 transparent;
+  border-color: transparent #4B9998 #4B9998 transparent;
   -webkit-transform: rotate(40deg);
   -ms-transform: rotate(40deg);
   transform: rotate(40deg);
@@ -64,9 +64,21 @@ form-dark .font-small {
     border-bottom: none;
 }
 
+
 #modalBtn, #modalBtn-login{
-  background-color: red;
+  
   margin-left: 2em;
+  
+  color: rgb(155, 221, 220);
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: rgb(80, 68, 90);
+  border-top: 1px solid rgb(148, 94, 133);
+  border-left: 1px solid rgb(148, 94, 133);
+  border-right: 2px solid  rgb(73, 55, 90);
+  border-bottom: 2px solid rgb(73, 55, 90);
+  border-radius: 15px;
+  padding: 10px 20px
 }
 ///////////////
 
@@ -85,17 +97,24 @@ form-dark .font-small {
 .search {
   margin: auto;
   width: 50%;
-  border: 1px solid red;
+  color: white;
+  font-family: Arial, Helvetica, sans-serif;
+  font-weight: bold;
+  background-color: rgb(26, 120, 187);
+  border-top: 2px solid rgb(73, 55, 90);
+  border-left: 2px solid rgb(73, 55, 90);
+  border-right: 1px solid rgb(148, 94, 133);
+  border-bottom: 1px solid rgb(148, 94, 133);
+  border-radius: 15px;
   padding: 10px;
-  border-radius: 20px;
   margin-top: 0.8%;
   margin-left: 2%;
 }
 
-
 /* Add a black background color to the top navigation */
 .topnav {
-  background-color: #333;
+  background-color: rgb(80, 68, 90);
+  border-bottom: 2px solid rgb(77, 65, 88);
   overflow: hidden;
   position: fixed;
   top: 0;
@@ -105,23 +124,25 @@ form-dark .font-small {
 
 /* Style the links inside the navigation barrrr */
 .topnav .home {
+  background-color: #285864;
+  
   float: left;
   color: #f2f2f2;
   text-align: center;
-  padding: 14px 16px;
+  padding: 10px 16px;
   text-decoration: none;
   font-size: 17px;
 }
 
 /* Change the color of links on hover */
 .topnav .home:hover {
-  background-color: red;
-  color: black;
+  background-color: #D35050;
+  color: #285864;
 }
 
 /* Add a color to the active/current link */
 .topnav a.active {
-  background-color: #333;
+  background-color: #285864;
   color: white;
 }
 
@@ -150,7 +171,8 @@ body {
 }
 
 .masonry-item:hover {
-  border: solid 1px red;
+  background-color: white;
+  
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
@@ -173,6 +195,7 @@ body {
 }
 .masonry-item:hover {
   filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, .3));
+  border: solid 4px rgb(218, 109, 109);
 }
 .masonry-content {
   overflow: hidden;
@@ -182,8 +205,13 @@ body {
   width: 100%;
 }
 .masonry-item {
-  color: #111111;
-  background-color: #f9f9f9;
+  color: #293C42;
+  background-color: rgb(247, 235, 229);
+  border-right: solid 4px rgb(233, 215, 206);
+  border-bottom: solid 4px rgb(233, 215, 206);
+  border-top: solid 4px rgb(255, 244, 239);
+  border-left: solid 4px rgb(255, 244, 239)
+
 }
 .masonry-title, .masonry-description {
   margin: 0;
@@ -192,11 +220,12 @@ body {
   font-weight: 700;
   font-size: 1.1rem;
   padding: 1rem 1.5rem;
+  color: #4B9998;
 }
 .masonry-description {
   padding: 1.5rem;
   font-size: .75rem;
-  border-top: 1px solid rgba(0, 0, 0, .05);
+  border-top: 1px solid #293C42;
 }
 .masonry-footer {
   font-size: .75em;
@@ -282,11 +311,10 @@ body {
   border: solid 1px white;
   transition: transform .2s; /* Animation */
 }
-
 #image-buttons input:hover {
-  transform: scale(1.5); /* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  transform: scale(1.5);/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
+  box-shadow: 0 5px 5px 0 rgb(0, 0, 0);
 }
-
 #image-buttons {
   display: flex;
   justify-content: space-between;
@@ -296,7 +324,7 @@ body {
 
 // background image
 body{
-    background-image:url('https://4kwallpaper.wiki/wp-content/uploads/2019/09/362250.jpg');
+    background: url('../img/blurredbackground.jpg');
     background-attachment:fixed;
     background-repeat: no-repeat;
     background-size: cover;
@@ -308,53 +336,56 @@ body{
   justify-content: space-around;
   align-items: center;
   border: 1px solid;
-  border-color: #ff0000;
-  border-radius: 40px;
-  color: #ff0000;
+  border-color: #D35050;
+  border-radius: 15px 50px 30px;
+  color: #D35050;
   width: 80%;
   padding: 10%;
   margin-left: 10%;
-  margin-top: 7%;
+  margin-top: 10%;
   text-align: center;
-  padding: 2%;
+  padding: 5%;;
   margin-bottom: 10px;
-  background-color: rgb(23, 22, 22);
+  background-color: #293C42;
 }
 
 .description{
   width: 80%;
   height: 100px;
-  border-radius: 5px;
+  border-radius: 20px;
   border: 1px solid;
-  border-color: #ff0000;
-  margin-bottom: 3px;
+  border-color: #D35050;
 }
 
 .button-create{
   width: 60%;
-  background-color: #fe0000;
+  background-color: #D35050;
   border: solid;
   border: rgb(255, 255, 255);
-  margin-top: 5%;
-  border-radius: 5px;
 }
 
 .title{
   margin-bottom: 10px;
   border: 1px solid;
-  border-color: #fe0000;
-  border-radius: 5px;
+  border-color: #D35050;
 }
 
 .choose-file{
   border: 1px solid;
-  border: rgb(255, 0, 0);
-  margin-top: 2%;
-  margin-left: 12%;
+  border-color: #D35050; 
 }
 
-.url, .image_url{
-  border: solid 1px red;
-  border-radius: 5px;
-  margin-bottom: 10px;
+.interaction-wrapper{
+  position: absolute;
+  display: none;
+}
+
+.comment_block {
+  height: 250px;
+  overflow: scroll;
+}
+
+#logInName {
+  color: red;
+  margin-left: 40px;
 }

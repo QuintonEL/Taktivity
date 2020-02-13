@@ -21,8 +21,6 @@ module.exports = (database) => {
     console.log(req, res)
     database.getAllResources()
       .then(data => {
-        res.send('etsttttt')
-        console.log('dataaaaaaa',data)
         const resources = data.rows;
         renderResources(resources)
         res.render({ resources });
@@ -38,12 +36,14 @@ module.exports = (database) => {
   router.post('/', (req, res) => {
     const user = req.body;
     user.password = bcrypt.hashSync(user.password, 12);
-    database.addUser(user)
-      .then(user => {
-        if (!user) {
-          res.send({ error: "error" });
-          return;
-        }
+    database.getUserByEmail(user.email)
+    .then(user => {
+      console.log('user2',user)
+      if (!user) {
+        res.send({ error: "error" });
+        return;
+      }
+      database.addUser(user)
         req.session.userId = user.id;
         res.send(":hugging_face:");
       })

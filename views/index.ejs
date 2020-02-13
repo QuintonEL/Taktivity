@@ -16,8 +16,7 @@
     <link rel="stylesheet" href="/styles/layout.scss" type="text/css" />
 
     <script type="text/javascript" src="/scripts/app.js"></script>
-    <script type="text/javascript" src="/scripts/helperFunctions.js"></script>
-
+    <script type="text/javascript" src="/scripts/jquerystyling.js"></script>
     <!-- JQUERY-->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <%- include resource-modal.ejs %>
@@ -141,9 +140,9 @@
         <img class="logo" src="./img/logo.png" alt="logo">
       </a>
       <!-- Search form -->
-      <input id="myInput" class="search" type="text" onkeyup="searchResources()" placeholder="Search" name="q">
+      <input class="search" type="text" placeholder="Search">
       <% if (userId) { %>
-        <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= userId %>" >Logout</a>
+        <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= userId %>" >Logout</a> <span id="logInName">Logged In As: <b><%=userInfo.email%></b></span>
         <% }else{ %>
         <a id="modalBtn-login" href="" class="btn btn-default btn-rounded" data-toggle="modal"
             data-target="#darkModalForm-login">Login</a>
@@ -157,19 +156,54 @@
 
     <
     <!-- Main Content -->
+
     <div class="masonry-wrapper">
       <div class="masonry">
         <%for (let i = 0; i < data.length; i++) {%>
         <div class="masonry-item">
+
           <div class="masonry-content" data-toggle="modal"
-          data-target="#resourcemodal">
+          data-target="#resourcemodal<%=[i]%>">
             <img src="<%=data[i].image_url%>" alt="Resource Topic">
             <a href="<%=data[i].url%>" target="_blank">
-            <h3 class="masonry-title"><%=data[i].title%></h3>
+            <h3 class="masonry-title" onclick="event.stopPropagation()" ><%=data[i].title%></h3>
             </a>
             <p class="masonry-description"><%=data[i].description%></p>
           </div>
+
         </div>
+
+       <div id="resourcemodal<%=[i]%>" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
+          <div class="modal-dialog modal-xl">
+            <div class="modal-content">
+
+                <img class="resource-image" src="<%=data[i].image_url%>" alt="Dummy Image" >
+              <div class="dynamic-content">
+                <h3 class="resource-title"><%=data[i].title%></h3>
+                <p class="resource-description"><%=data[i].description%></p>
+              </div>
+
+              <div class="interaction-container" >
+                <div id="respond" >
+                  <form action="post_comment.php" method="post" id="commentform">
+
+                    <textarea class="comment-field" name="comment" id="comment" rows="3"
+                    tabindex="4"  required="required" placeholder="Leave a comment!"></textarea>
+
+                    <input type="hidden" name="comment_post_ID" value="1" id="comment_post_ID" />
+                    <input name="submit" type="submit" value="Submit comment" />
+
+                  </form>
+                </div>
+                  <div class="rating">
+                    <span>☆</span><span>☆</span><span>☆</span><span>☆</span><span>☆</span>
+                  </div>
+                </div>
+                  <button class="add-to-favorites" onclick="myFunction()"> Favorite this?</button>
+              </div>
+            </div>
+          </div>
+
         <%}%>
     </div>
     <div class="masonry-footer">
