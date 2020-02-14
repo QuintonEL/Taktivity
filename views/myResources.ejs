@@ -15,6 +15,7 @@
   <script type="text/javascript" src="/vendor/jquery-3.0.0.js"></script>
   <script type="text/javascript" src="/scripts/helperFunctions.js"></script>
   <script type="text/javascript" src="/scripts/app.js"></script>
+  <script type="text/javascript" src="/scripts/jquerystyling.js"></script>
 
   <!-- Bootstrap -->
   <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" rel="stylesheet"
@@ -157,7 +158,7 @@
     <input id="myInput" class="search" type="text" onkeyup="searchResources()" placeholder="Search" name="q">
     <% if (postOwner) { %>
     <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= postOwner%>">Logout</a>
-    <span>Logged in As: <%=userInfo.email%></span>
+    <span class="email-display">Logged in As: <%=userInfo.email%></span>
     <% }else{ %>
     <a id="modalBtn-login" href="" class="btn btn-default btn-rounded" data-toggle="modal"
       data-target="#darkModalForm-login">Login</a>
@@ -172,32 +173,33 @@
   <section id="create-post">
     <form action="/api/resources/new" method="POST">
       <h1>Create a Resource</h1>
+    </div>
+    <label for="topic">Choose a Topic:</label>
+    <select class="topic" name="topic", >
+      <option value="Math">Math</option>
+      <option value="Physics">Physics</option>
+      <option value="Chemistry">Chemistry</option>
+      <option value="Software">Software</option>
+    </select>
+    <div>
       <div>
         <input type="text" name="title" maxlength="20" class="title" placeholder="Enter a title..">
       </div>
       <div>
         <textarea name="description" class="description" placeholder="  Write a description.." maxlength="140"></textarea>
-      </div>
-      <label for="topic">Choose a Topic:</label>
-      <select class="topic" name="topic", >
-        <option value="Math">Math</option>
-        <option value="Physics">Physics</option>
-        <option value="Chemistry">Chemistry</option>
-        <option value="Software">Software</option>
-      </select>
-      <div>
+      
         <input type="url" name="url" class="url" placeholder="Enter a Resource URL..">
       </div>
       <div>
         <input type="url" name="image_url" class="image_url" placeholder="Enter Cover Photo URL..">
       </div>
-      <input type="submit" class="button-create" alt="Submit" width="100">
+      <input type="submit" class="button-create" value="let's Tak it!" width="100">
     </form>
   </section>
 
   <div>
     <section id="image-buttons">
-      <button class="btn" onclick="filterResources('math')"> Math</button>
+      <button class="btn" id="mathbtn" onclick="filterResources('math')"> Math</button>
       <button class="btn" onclick="filterResources('software')"> Software</button>
       <button class="btn" onclick="filterResources('physics')"> Physics</button>
       <button class="btn" onclick="filterResources('chemistry')"> Chemistry</button>
