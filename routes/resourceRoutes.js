@@ -20,7 +20,7 @@ module.exports = (database) => {
   })
 
   router.get('/myResources', (req, res) => {
-    console.log('YOU ARE IN myResources')
+
 
     let postOwner = req.session.userId
     if (!postOwner) {
@@ -31,7 +31,18 @@ module.exports = (database) => {
       .then(data => {
         database.getUserById(postOwner)
         .then(userInfo => {
-          res.render("myResources", { postOwner, data, userInfo });
+          database.getFavourites(postOwner)
+          .then(favs => {
+            //convert to array
+            let favArr = [];
+            favs.forEach(element => favArr.push(Number(element.resource_id)))
+            favArr = [9]
+            database.getAllResourcesByResourceId(postOwner)
+            .then(favourites => {
+              console.log(favourites)
+              res.render("myResources", { postOwner, data, userInfo, favourites });
+            })
+          })
         })
       })
       .catch(err => {
