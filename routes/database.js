@@ -64,6 +64,21 @@ const getAllResourcesById = function(creatorId){
 }
 exports.getAllResourcesById = getAllResourcesById;
 
+//get all resources by resource_id
+const getAllResourcesByResourceId = function(resourceId){
+  return pool.query(`
+    SELECT *
+    FROM resources
+    WHERE id IN (  SELECT resource_id
+      FROM favourites
+      WHERE user_id = $1
+      LIMIT 100)
+    LIMIT 100;
+  `, [resourceId])
+  .then(res => res.rows);
+}
+exports.getAllResourcesByResourceId = getAllResourcesByResourceId;
+
 //add a comment
 const addComment = function(comment){
 return pool.query(`
@@ -101,7 +116,7 @@ exports.addFavourite = addFavourite;
 const getFavourites = function(user_id) {
   console.log('getting favourites for', user_id)
   return pool.query(`
-  SELECT *
+  SELECT resource_id
   FROM favourites
   WHERE user_id = $1
   LIMIT 100;
