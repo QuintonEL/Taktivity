@@ -1,10 +1,6 @@
 // import { addFavourite } from "../../routes/database";
 
 jQuery(function($){
-  // const loggedInUserId = $('#modalBtn').data("userid");
-
-  // if (!loggedInUserId) { $('#modalBtn').trigger('click') }
-
   // for the register
   $("#signUp").submit(function (event) {
     event.preventDefault()
@@ -44,7 +40,7 @@ jQuery(function($){
     },'html')
   });
 
-  //for the ratings
+  // for the ratings
   $("form#ratingForm").submit(function(event) {
       event.preventDefault(); // prevent the default click action from being performed
       if ($("#ratingForm :radio:checked").length == 0) {
@@ -55,5 +51,12 @@ jQuery(function($){
       }
   });
 
+  // for the comments
+  // $("#commentform").submit(function(event) {
+  //   event.preventDefault();
+  //   console.log('comentssssss')
+  //   data = $("#comment").val();
+  //   $.post("/api/resources/new", data);
+  // })
 
 })

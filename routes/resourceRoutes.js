@@ -63,5 +63,20 @@ module.exports = (database) => {
   })
 
 
+  router.post('/newcomment', (req, res) => {
+    let newComment = req.body;
+    console.log("MADE IT!!", newComment);
+    newComment.user_id = req.session.userId;
+    database.addComment(newComment)
+      .then(data => {
+        console.log('dataaaaaaaaaaaaa', data)
+      })
+      .catch(err => {
+        res.status(500)
+        res.json({ error: err.message })
+      })
+  })
+
+
 return router;
 }

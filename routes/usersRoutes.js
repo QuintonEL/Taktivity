@@ -20,7 +20,7 @@ module.exports = (database) => {
     res.send('homepage')
     database.getAllResources()
       .then(data => {
-        const resources = data.rows;
+        const resources = data;
         console.log('resourcesssss', resources) //when does this happen???
         renderResources(resources)
         res.render({ resources });

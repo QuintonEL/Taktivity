@@ -41,13 +41,33 @@ const addUser = function(user){
 exports.addUser = addUser;
 
 //get all resources
-const getAllResources = function(){
+const getAllResources = function () {
+  console.log("IN THE RESOURCE");
+  let resourceArray;
   return pool.query(`
     SELECT *
     FROM resources
     LIMIT 100;
   `, [])
-  .then(res => res.rows);
+    .then(async (res) => {
+      resourceArray = res.rows;// this is the array of resources.
+      for(let i = 0; i < resourceArray.length; i++) {
+        console.log(i);
+        console.log("RESOURCE ELEMENT", resourceArray[i]);
+        resourceArray[i].commentsArray = await pool.query(`
+          SELECT * FROM comments
+          WHERE comments.resource_id = $1
+        `,[resourceArray[i].id])
+        resourceArray[i].commentsArray = resourceArray[i].commentsArray.rows;
+      }
+      return resourceArray
+    })
+    .then((res) => {
+      console.log("BEFORE RETURN");
+      console.log("RESOURCE ARRAY ", res);
+      return res;
+    });
+
 }
 exports.getAllResources = getAllResources;
 
@@ -80,15 +100,29 @@ const getAllResourcesByResourceId = function(resourceId){
 exports.getAllResourcesByResourceId = getAllResourcesByResourceId;
 
 //add a comment
-const addComment = function(comment){
-return pool.query(`
+const addComment = function (comment) {
+  let date = new Date().toISOString();
+  return pool.query(`
   INSERT INTO comments (resource_id, user_id, text, created_at)
   VALUES ($1, $2, $3, $4)
   RETURNING *;
-`, [comment.resource_id, comment.user_id, comment.text, comment.created_at])
-.then(res => res.rows[0]);
+`, [comment.comment_post_ID, comment.user_id, comment.comment, date])
+  .then(res => res.rows[0]);
 }
 exports.addComment = addComment;
+
+//get comment for specific post
+const getCommentsById = function(id){
+  return pool.query(`
+  SELECT *
+  FROM comments
+  WHERE user_id = $1
+  LIMIT 100;
+  `[id])
+  .then(res => res.rows);
+}
+exports.getCommentsById = getCommentsById;
+
 
 //add a rating
 const addRating = function(ratings){
