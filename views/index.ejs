@@ -37,8 +37,8 @@
           <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
             <!--Header-->
             <div class="modal-header text-center pb-4">
-              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel"><strong>SIGN</strong> <a
-                  class="green-text font-weight-bold"><strong> UP</strong></a></h3>
+              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel">SIGN <a
+                  class="green-text font-weight-bold"> UP</a></h3>
               <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -63,7 +63,7 @@
               <div class="row d-flex align-items-center mb-4">
                 <!--Grid column-->
                 <div class="text-center mb-3 col-md-12">
-                  <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Sign up</button>
+                  <button type="submit" id="modalsignupbtn" class="btn btn-success btn-block btn-rounded z-depth-1">Sign up</button>
                 </div>
                 <!--Grid column-->
               </div>
@@ -72,8 +72,7 @@
               <div class="row">
                 <!--Grid column-->
                 <div class="col-md-12">
-                  <p class="font-small white-text d-flex justify-content-end">Have an account? <a href="#" class="green-text ml-1 font-weight-bold">
-                  Log in</a></p>
+
                 </div>
                 <!--Grid column-->
               </div>
@@ -96,8 +95,8 @@
           <div class="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
             <!--Header-->
             <div class="modal-header text-center pb-4">
-              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel-login"><strong>LOG</strong> <a
-                  class="green-text font-weight-bold"><strong> IN</strong></a></h3>
+              <h3 class="modal-title w-100 white-text font-weight-bold" id="myModalLabel-login">LOG <a
+                  class="green-text font-weight-bold"> IN</a></h3>
               <button type="button" class="close white-text" data-dismiss="modal" aria-label="Close">
                 <span aria-hidden="true">&times;</span>
               </button>
@@ -117,7 +116,7 @@
               <div class="row d-flex align-items-center mb-4">
                 <!--Grid column-->
                 <div class="text-center mb-3 col-md-12">
-                  <button type="submit" class="btn btn-success btn-block btn-rounded z-depth-1">Log In</button>
+                  <button type="submit" id="modalloginbtn" class="btn btn-success btn-block btn-rounded z-depth-1">Log In</button>
                 </div>
                 <!--Grid column-->
               </div>
@@ -144,7 +143,7 @@
       <input id="myInput" class="search" type="text" onkeyup="searchResources()" placeholder="Search" name="q">
       <% if (userId) { %>
         <a id="modalBtn" href="/api/users/logout" class="btn btn-default btn-rounded" data-userid="<%= userId %>" >Logout</a>
-        <span>Logged in As: <%=userInfo.email%></span>
+        <span class="email-display">Logged in As: <%=userInfo.email%></span>
         <% }else{ %>
         <a id="modalBtn-login" href="" class="btn btn-default btn-rounded" data-toggle="modal"
             data-target="#darkModalForm-login">Login</a>
@@ -163,7 +162,6 @@
       <div class="masonry">
         <%for (let i = 0; i < revData.length; i++) {%>
         <div class="masonry-item">
-
           <div class="masonry-content" data-toggle="modal"
           data-target="#resourcemodal<%=[i]%>">
             <img src="<%=revData[i].image_url%>" alt="Resource Topic">
@@ -177,7 +175,8 @@
         </div>
 
        <div id="resourcemodal<%=[i]%>" class="modal fade bd-example-modal-xl" tabindex="-1" role="dialog" aria-labelledby="myExtraLargeModalLabel" aria-hidden="true">
-          <div class="modal-dialog modal-xl">
+          <div id="modalpopup" class="modal-dialog modal-xl">
+
             <div class="modal-content">
 
                 <img class="resource-image" src="<%=revData[i].image_url%>" alt="Dummy Image" >
@@ -189,8 +188,8 @@
               </div>
 
               <div class="interaction-container" >
-                <div id="respond">
-                  <form action="post_comment.php" method="post" id="commentform<%=i%>">
+                <div id="respond" >
+                 <form action="post_comment.php" method="post" id="commentform<%=i%>">
 
                     <textarea class="comment-field" name="comment" id="comment<%=i%>" rows="3"
                     tabindex="4"  required="required" placeholder="Leave a comment!"></textarea>
