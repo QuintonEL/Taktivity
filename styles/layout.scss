@@ -12,33 +12,37 @@ form-dark .font-small {
   height: 15px; }
 
 .form-dark .md-form label {
-  color: #fff; }
+  color: rgb(0, 99, 170); }
 
 .form-dark input[type=email]:focus:not([readonly]) {
-  border-bottom: 1px solid #FF8C03;
-  -webkit-box-shadow: 0 1px 0 0 #FF8C03;
-  box-shadow: 0 1px 0 0 #FF8C03; }
+  border-bottom: 1px solid rgb(255, 0, 72);
+  -webkit-box-shadow: 0 1px 0 0 rgb(255, 0, 72);
+  box-shadow: 0 1px 0 0 rgb(255, 0, 72); }
 
 .form-dark input[type=email]:focus:not([readonly]) + label {
   color: #fff; }
 
 .form-dark input[type=password]:focus:not([readonly]) {
-  border-bottom: 1px solid #4B9998;
-  -webkit-box-shadow: 0 1px 0 0 #4B9998;
-  box-shadow: 0 1px 0 0 #4B9998; }
+  border-bottom: 1px solid rgb(255, 0, 72);
+  -webkit-box-shadow: 0 1px 0 0 rgb(255, 0, 72);
+  box-shadow: 0 1px 0 0 rgb(255, 0, 72); }
 
 .form-dark input[type=password]:focus:not([readonly]) + label {
   color: #fff; }
 
 .form-dark input[type="checkbox"] + label:before {
   content: '';
+  ;
   position: absolute;
   top: 0;
   left: 0;
   width: 17px;
   height: 17px;
   z-index: 0;
-  border: 1.5px solid #fff;
+  border-right: 1.5px solid rgb(156, 83, 0);
+  border-bottom: 1.5px solid rgb(12, 99, 0);
+  border-top: 1.5px solid rgb(0, 91, 128);
+  border-left: 1.5px solid rgb(151, 0, 126);
   border-radius: 1px;
   margin-top: 2px;
   -webkit-transition: 0.2s;
@@ -50,8 +54,8 @@ form-dark .font-small {
   width: 12px;
   height: 22px;
   border-style: solid;
-  border-width: 2px;
-  border-color: transparent #4B9998 #4B9998 transparent;
+  border-width: 3px;
+  border-color: transparent rgb(255, 0, 72) rgb(255, 0, 72)  transparent;
   -webkit-transform: rotate(40deg);
   -ms-transform: rotate(40deg);
   transform: rotate(40deg);
@@ -64,9 +68,8 @@ form-dark .font-small {
     border-bottom: none;
 }
 
-
 #modalBtn, #modalBtn-login{
-
+  
   margin-left: 2em;
   
   color: rgb(108, 96, 119);
@@ -79,6 +82,14 @@ form-dark .font-small {
   border-bottom: 2px solid rgb(73, 55, 90);
   border-radius: 15px;
   padding: 10px 20px
+}
+
+#modalsignupbtn, #modalloginbtn {
+  color: rgba(255, 255, 255, 0.400);
+  
+  background-color: rgba(255, 255, 255, 0.171);
+  border: solid 1px rgba(255, 255, 255, 0);
+
 }
 ///////////////
 
@@ -122,10 +133,14 @@ form-dark .font-small {
   z-index: 1000;
 }
 
+.email-display{
+  padding-left: 25px;
+  color: rgb(0, 111, 190);;
+}
 /* Style the links inside the navigation barrrr */
 .topnav .home {
   background-color: #022C44;
-  
+  box-shadow: 5px 5px 10px 0px rgba(0, 0, 0, 0.253);
   float: left;
   color: #f2f2f2;
   text-align: center;
@@ -137,7 +152,9 @@ form-dark .font-small {
 /* Change the color of links on hover */
 .topnav .home:hover {
   background-color: #004F89;
-  color: #285864;
+  box-shadow: 5px 5px 20px 0px rgba(0, 0, 0, 0.384);
+  
+  
 }
 
 /* Add a color to the active/current link */
@@ -169,14 +186,14 @@ body {
   cursor: pointer;
   transition: 0.3s;
 }
-
+//MY CODE DIDNT CONTAIN THIS BLOCK
 .masonry-item h6 {
   margin-left: 25px;
 }
 
 .masonry-item:hover {
   background-color: white;
-
+  
 }
 
 @media only screen and (max-width: 1023px) and (min-width: 768px) {
@@ -190,7 +207,7 @@ body {
   }
 }
 .masonry-item, .masonry-content {
-  border-radius: 4px;
+  
   overflow: hidden;
 }
 .masonry-item {
@@ -199,7 +216,7 @@ body {
 }
 .masonry-item:hover {
   filter: drop-shadow(0px 5px 5px rgba(0, 0, 0, .3));
-  border: solid 4px rgb(218, 109, 109);
+  border: solid 4px #91417A;
 }
 .masonry-content {
   overflow: hidden;
@@ -210,11 +227,11 @@ body {
 }
 .masonry-item {
   color: #293C42;
-  background-color: rgb(247, 235, 229);
-  border-right: solid 4px rgb(233, 215, 206);
-  border-bottom: solid 4px rgb(233, 215, 206);
-  border-top: solid 4px rgb(255, 244, 239);
-  border-left: solid 4px rgb(255, 244, 239)
+  background-color: rgb(235, 248, 255);
+  border-right: solid 4px #022C44;
+  border-bottom: solid 4px #022C44;
+  border-top: solid 4px rgb(0, 67, 105);
+  border-left: solid 4px rgb(0, 61, 97)
 
 }
 .masonry-title, .masonry-description {
@@ -224,7 +241,7 @@ body {
   font-weight: 700;
   font-size: 1.1rem;
   padding: 1rem 1.5rem;
-  color: #4B9998;
+  color: rgb(106, 78, 129);
 }
 .masonry-description {
   padding: 1.5rem;
@@ -251,11 +268,20 @@ body {
   margin-left: auto;
  }
  .modal-content {
+  
   position: relative;
   padding: 25px;
 
- }
-
+  border-radius: 5px;
+  padding: 7px;
+  box-shadow: 5px 5px 30px 0px black;
+  }
+  .resource-modal-content {
+    background-color: rgb(149, 166, 199);
+    border-radius: 3px;
+    
+    padding : 15px
+  }
  .dynamic-content {
    width: 50%;
  }
@@ -264,6 +290,7 @@ body {
   height: 100%;
     width: 40%;
     object-fit: cover;
+    
     }
 
 .interaction-container {
@@ -275,9 +302,12 @@ body {
 
 .resource-title {
   font-size: 15px;
+  
+  
 }
 .resource-description {
   width: 100%;
+  
 }
 
 .rating > span:hover:before {
@@ -323,13 +353,7 @@ body {
   transform: scale(1.5);/* (150% zoom - Note: if the zoom is too large, it will go outside of the viewport) */
   box-shadow: 0 5px 5px 0 rgb(0, 0, 0);
 }
-#image-buttons {
-  display: flex;
-  justify-content: space-between;
-  margin-top: 4%;
-  margin-left: 5%;
-  margin-right: 5%;
-}
+
 
 // background image
 body{
@@ -344,45 +368,95 @@ body{
   display: flex;
   justify-content: space-around;
   align-items: center;
-  border: 1px solid;
-  border-color: #D35050;
-  border-radius: 15px 50px 30px;
-  color: #D35050;
-  width: 80%;
+  
+  border-right: 1px solid rgb(156, 83, 0);
+  border-bottom: 1px solid rgb(12, 99, 0);
+  border-left: 1px solid rgb(0, 91, 128);
+  border-top: 1px solid rgb(151, 0, 126);
+  
+  border-radius: 10px;
+  padding: 7px;
+  box-shadow: 5px 5px 30px 0px black;
+  color: rgba(32, 130, 201, 0.637);
+  width: 50%;
   padding: 10%;
-  margin-left: 10%;
+  margin-left: 25%;
   margin-top: 10%;
   text-align: center;
-  padding: 5%;;
+  padding: 2% 5% 3% 5%;;
   margin-bottom: 10px;
-  background-color: #293C42;
+  background-color: rgba(2, 44, 68, 0.700);
+}
+
+.topic {
+  background-color: rgba(255, 255, 255, 0.137);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  border-right: 1px solid rgba(255, 255, 255, 0.137);
+  border-top: 2px solid rgba(0, 0, 0, 0.137);
+  border-left: 2px solid rgba(0, 0, 0, 0.137);
+  color: rgba(255, 255, 255, 0.555);
 }
 
 .description{
-  width: 80%;
+  width: 100%;
   height: 100px;
-  border-radius: 20px;
-  border: 1px solid;
-  border-color: #D35050;
+  
+  
+  background-color: rgba(255, 255, 255, 0.137);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  border-right: 1px solid rgba(255, 255, 255, 0.137);
+  border-top: 2px solid rgba(0, 0, 0, 0.137);
+  border-left: 2px solid rgba(0, 0, 0, 0.137);
+  color: white;
 }
 
 .button-create{
+  margin-top: 25px;
   width: 60%;
-  background-color: #D35050;
+  background-color: rgba(0, 100, 172, 0.541);
   border: solid;
   border: rgb(255, 255, 255);
-  margin-top: 2%;
+  color: rgb(21, 121, 192);
 }
 
 .title{
+ margin-top: 25px;
   margin-bottom: 10px;
-  border: 1px solid;
-  border-color: #D35050;
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.137);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  border-right: 1px solid rgba(255, 255, 255, 0.137);
+  border-top: 2px solid rgba(0, 0, 0, 0.137);
+  border-left: 2px solid rgba(0, 0, 0, 0.137);
+  color: white;
+}
+
+.url {
+  margin: 5px 0px 5px; 
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.137);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  border-right: 1px solid rgba(255, 255, 255, 0.137);
+  border-top: 2px solid rgba(0, 0, 0, 0.137);
+  border-left: 2px solid rgba(0, 0, 0, 0.137);
+  color: white;
+}
+
+.image_url{
+  margin: 5px 0px 10px; 
+  width: 100%;
+  background-color: rgba(255, 255, 255, 0.137);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.137);
+  border-right: 1px solid rgba(255, 255, 255, 0.137);
+  border-top: 2px solid rgba(0, 0, 0, 0.137);
+  border-left: 2px solid rgba(0, 0, 0, 0.137);
+  color: white;
 }
 
 .choose-file{
   border: 1px solid;
-  border-color: #D35050;
+  
+  background-color: rgb(255, 0, 0);
 }
 
 .interaction-wrapper{
@@ -390,16 +464,30 @@ body{
   display: none;
 }
 
+#image-buttons {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 4%;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+#image-buttons .btn {
+  border-top: 1px solid rgba(255, 255, 255, 0.137);
+  border-left: 1px solid rgba(255, 255, 255, 0.137);
+  border-bottom: 2px solid rgba(0, 0, 0, 0.137);
+  border-right: 2px solid rgba(0, 0, 0, 0.137);
+  background-color: rgba(2, 44, 68, 0.700);
+  color: rgba(255, 255, 255, 0.555);
+}
 .comment_block {
   height: 250px;
   overflow: scroll;
 }
 
 #logInName {
-  color: red;
+  color: rgb(21, 121, 192);
   margin-left: 40px;
 }
-
 .url {
   margin-top: 2%;
 }
