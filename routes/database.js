@@ -98,17 +98,17 @@ const addFavourite = function(favourites){
 exports.addFavourite = addFavourite;
 
 //get all user favourites
-const getFavourite = function(user_id) {
-  console.log('getting favourites')
+const getFavourites = function(user_id) {
+  console.log('getting favourites for', user_id)
   return pool.query(`
   SELECT *
   FROM favourites
   WHERE user_id = $1
   LIMIT 100;
-  `, [userId])
+  `, [user_id])
   .then(res => res.rows);
 }
-exports.getFavourite = getFavourite;
+exports.getFavourites = getFavourites;
 
 //create resource
 const createResources = function(resources){

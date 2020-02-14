@@ -221,6 +221,22 @@
       </div>
       <%}%>
   </div>
+  <div class="masonry-wrapper">
+    <div class="masonry">
+      <%for (let i = 0; i < favs.length; i++) {%>
+      <div class="masonry-item">
+        <div class="masonry-content" data-toggle="modal"
+        data-target="#resourcemodal">
+          <img src="<%=favs[i].image_url%>" alt="Resource Topic">
+          <a href="<%=favs[i].url%>" target="_blank">
+          <h3 class="masonry-title"><%=favs[i].title%></h3>
+          </a>
+          <h6><%=favs[i].topic%></h6>
+          <p class="masonry-description"><%=favs[i].description%></p>
+        </div>
+      </div>
+      <%}%>
+  </div>
   <div class="masonry-footer">
     <p>Created with &#10084; with <a href="//w3bits.com/tools/masonry-generator/" target="_blank" rel="external noopener nofollow">CSS Masonry Generator</a></p>
   </div>

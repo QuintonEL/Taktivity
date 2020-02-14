@@ -31,7 +31,10 @@ module.exports = (database) => {
       .then(data => {
         database.getUserById(postOwner)
         .then(userInfo => {
-          res.render("myResources", { postOwner, data, userInfo });
+          database.getFavourites(postOwner)
+          .then(favs => {
+            res.render("myResources", { postOwner, data, userInfo, favs });
+          })
         })
       })
       .catch(err => {
