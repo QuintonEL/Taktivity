@@ -5,6 +5,7 @@ jQuery(function($){
 
   // if (!loggedInUserId) { $('#modalBtn').trigger('click') }
 
+  // for the register
   $("#signUp").submit(function (event) {
     event.preventDefault()
     $.post('/api/users/', $(this).serialize(), function (html) {
@@ -15,7 +16,7 @@ jQuery(function($){
     }, 'html')
   });
 
-
+  // for the login
   $("#login").submit(function (event) {
     event.preventDefault()
     console.log('hello')
@@ -28,6 +29,7 @@ jQuery(function($){
     }, 'html')
   });
 
+  //for the favourite button
   $(".modal").on('click', `.add-to-favorites`, function(event) {
     event.preventDefault()
     console.log('favorite has been clicked')
@@ -42,7 +44,16 @@ jQuery(function($){
     },'html')
   });
 
-  
+  //for the ratings
+  $("form#ratingForm").submit(function(event) {
+      event.preventDefault(); // prevent the default click action from being performed
+      if ($("#ratingForm :radio:checked").length == 0) {
+          $('#status').html("nothing checked");
+          return false;
+      } else {
+          $('#status').html( 'You picked ' + $('input:radio[name=rating]:checked').val() );
+      }
+  });
 
 
 })
