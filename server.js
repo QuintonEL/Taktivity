@@ -63,9 +63,10 @@ app.get("/", (req, res) => {
   database.getAllResources()
   .then(data => {
     console.log('some data', data)
+    let revData = data.reverse()
     database.getUserById(userId)
     .then(userInfo => {
-      res.render("index", { userId, data, userInfo });
+      res.render("index", { userId, revData, userInfo });
     })
   })
   .catch(err => {

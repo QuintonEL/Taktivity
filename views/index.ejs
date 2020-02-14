@@ -161,17 +161,17 @@
 
     <div class="masonry-wrapper">
       <div class="masonry">
-        <%for (let i = 0; i < data.length; i++) {%>
+        <%for (let i = 0; i < revData.length; i++) {%>
         <div class="masonry-item">
 
           <div class="masonry-content" data-toggle="modal"
           data-target="#resourcemodal<%=[i]%>">
-            <img src="<%=data[i].image_url%>" alt="Resource Topic">
-            <a href="<%=data[i].url%>" target="_blank">
-              <h3 class="masonry-title" onclick="event.stopPropagation()" ><%=data[i].title%></h3>
+            <img src="<%=revData[i].image_url%>" alt="Resource Topic">
+            <a href="<%=revData[i].url%>" target="_blank">
+              <h3 class="masonry-title" onclick="event.stopPropagation()" ><%=revData[i].title%></h3>
             </a>
-            <h6><%=data[i].topic%></h6>
-            <p class="masonry-description"><%=data[i].description%></p>
+            <h6><%=revData[i].topic%></h6>
+            <p class="masonry-description"><%=revData[i].description%></p>
           </div>
 
         </div>
@@ -180,12 +180,12 @@
           <div class="modal-dialog modal-xl">
             <div class="modal-content">
 
-                <img class="resource-image" src="<%=data[i].image_url%>" alt="Dummy Image" >
+                <img class="resource-image" src="<%=revData[i].image_url%>" alt="Dummy Image" >
               <div class="dynamic-content">
-                <a href="<%=data[i].url%>" target="_blank">
-                  <h3 class="resource-title"><%=data[i].title%></h3>
+                <a href="<%=revData[i].url%>" target="_blank">
+                  <h3 class="resource-title"><%=revData[i].title%></h3>
                 </a>
-                <p class="resource-description"><%=data[i].description%></p>
+                <p class="resource-description"><%=revData[i].description%></p>
               </div>
 
               <div class="interaction-container" >
@@ -209,7 +209,7 @@
                   <option value="5">5</option>
                 </select>
                 </div>
-                  <button id="add<%=data[i].id%>" class="add-to-favorites"> Favorite</button>
+                  <button id="add<%=revData[i].id%>" class="add-to-favorites"> Favorite</button>
               </div>
             </div>
           </div>
