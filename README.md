@@ -1,3 +1,21 @@
+# Taktivity
+
+Pinterest for learners.  Users can save learning resources like tutorials, blogs and videos in a central place that is publicly available to any user.
+
+Deployed on [Heroku](https://taktivity.herokuapp.com/)
+
+## Screenshots
+
+Browse resources
+![Home](https://github.com/QuintonEL/Resource-Wall/blob/master/docs/Home.png?raw=true)
+
+View a resource and add a comment, rate, or add to favorites
+![View](https://github.com/QuintonEL/Resource-Wall/blob/master/docs/View.png?raw=true)
+
+Add a resource
+![Create](https://github.com/QuintonEL/Resource-Wall/blob/master/docs/Create.png?raw=true)
+
+
 LHL Node Skeleton
 =========
 
